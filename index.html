@@ -64,36 +64,24 @@
 
         .logo-header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin-bottom: 50px;
-            flex-wrap: wrap;
-            gap: 20px;
         }
 
-        .logo-left, .logo-right {
+        .logo-container {
             background: rgba(255, 255, 255, 0.95);
-            padding: 15px 25px;
+            padding: 15px 30px;
             border-radius: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .logo-left {
-            font-weight: bold;
-            color: var(--blue-dark);
-            font-size: 1.2rem;
-        }
-
-        .logo-right img {
-            height: 40px;
+        .logo-container img {
+            height: 50px;
             width: auto;
-        }
-
-        .logo-right span {
-            font-size: 1.5rem;
         }
 
         .hero h1 {
@@ -513,13 +501,8 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="logo-header">
-                <div class="logo-left">
-                    <span>🏢</span>
-                    <span>Grupo Garcia</span>
-                </div>
-                <div class="logo-right">
+                <div class="logo-container">
                     <img src="logo-clickleads.png" alt="Click Leads">
-                    <span>😎</span>
                 </div>
             </div>
 
