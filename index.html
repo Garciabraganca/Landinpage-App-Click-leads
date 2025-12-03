@@ -549,8 +549,8 @@
             <h2 class="section-title">Problema x Solução</h2>
 
             <div class="tabs">
-                <button class="tab-button active" onclick="showTab('luta')">A Luta Solitária</button>
-                <button class="tab-button" onclick="showTab('solucao')">A Solução em Família</button>
+                <button class="tab-button active" onclick="showTab('luta', event)">A Luta Solitária</button>
+                <button class="tab-button" onclick="showTab('solucao', event)">A Solução em Família</button>
             </div>
 
             <div class="comparison-content">
@@ -645,7 +645,7 @@
             <h2>Cadastro</h2>
             <p class="registration-subtitle">Sua Nova Rotina de Vendas Começa Aqui.</p>
 
-            <form class="registration-form" action="https://clickleads.grupogarciaseguradoras.com.br/login" method="get">
+            <form class="registration-form" action="https://clickleads.grupogarciaseguradoras.com.br/login" method="post">
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
@@ -674,8 +674,8 @@
             <p>&copy; 2025 Grupo Garcia. Todos os direitos reservados.</p>
             
             <div class="footer-links">
-                <a href="#termos">Termos de Uso</a> | 
-                <a href="#privacidade">Política de Privacidade</a>
+                <a href="https://clickleads.grupogarciaseguradoras.com.br/termos">Termos de Uso</a> | 
+                <a href="https://clickleads.grupogarciaseguradoras.com.br/privacidade">Política de Privacidade</a>
             </div>
 
             <div class="footer-contact">
@@ -686,15 +686,15 @@
     </footer>
 
     <script>
-        function showTab(tab) {
+        function showTab(tabName, event) {
             const buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            event.currentTarget.classList.add('active');
 
             const lutaSide = document.getElementById('side-luta');
             const solucaoSide = document.getElementById('side-solucao');
 
-            if (tab === 'luta') {
+            if (tabName === 'luta') {
                 lutaSide.style.order = '1';
                 solucaoSide.style.order = '3';
                 lutaSide.style.opacity = '1';
