@@ -687,6 +687,8 @@
 
     <script>
         function showTab(tabName, event) {
+            if (!event) return;
+            
             const buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
