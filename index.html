@@ -405,42 +405,6 @@
             opacity: 0.95;
         }
 
-        .registration-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--blue-dark);
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid var(--blue-light);
-            border-radius: 15px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--blue-medium);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
         /* Footer */
         footer {
             background: var(--blue-dark);
@@ -532,10 +496,6 @@
 
             .registration-subtitle {
                 font-size: 1.1rem;
-            }
-
-            .registration-form {
-                padding: 30px 20px;
             }
         }
     </style>
@@ -682,38 +642,20 @@
         </div>
     </section>
 
-    <!-- Registration Section -->
+    <!-- CTA Final Section -->
     <section class="registration">
-        <div class="container">
-            <h2>Cadastro</h2>
+        <div class="container" style="text-align: center;">
+            <h2>Pronto Para Transformar Suas Vendas?</h2>
             <p class="registration-subtitle">Sua Nova Rotina de Vendas Começa Aqui.</p>
 
             <p class="registration-subtitle">
-                Crie sua conta grátis e, dentro do painel, você escolhe como quer começar: comprando
-                <strong>leads avulsos a partir de R$ 50</strong> ou ativando pacotes de leads quando estiver
-                pronto para escalar.
+                Acesse o app agora e comece comprando
+                <strong>leads avulsos a partir de R$ 50</strong> - sem fidelidade, sem pacote mínimo!
             </p>
 
-            <form class="registration-form" action="https://clickleads.grupogarciaseguradoras.com.br/login" method="post">
-                <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">E-mail Profissional</label>
-                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="whatsapp">WhatsApp (Com DDD)</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999">
-                </div>
-
-                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">
-                    CRIAR MINHA CONTA GRÁTIS
-                </button>
-            </form>
+            <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" style="font-size: 1.3rem; padding: 22px 50px; margin-top: 20px;">
+                ACESSAR O APP AGORA
+            </a>
         </div>
     </section>
 
@@ -758,27 +700,25 @@
             }
         }
 
-        // Meta Pixel Lead event tracking
+        // Meta Pixel + GA4 Lead event tracking
         document.addEventListener('DOMContentLoaded', function() {
-            // Track Lead event on hero CTA button click
-            const heroCTA = document.querySelector('.hero .btn-primary');
-            if (heroCTA) {
-                heroCTA.addEventListener('click', function() {
+            // Track Lead event on all CTA button clicks
+            const ctaButtons = document.querySelectorAll('.btn-primary');
+            ctaButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    // Meta Pixel tracking
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'Lead');
                     }
-                });
-            }
-
-            // Track Lead event on form submit button click
-            const formSubmitButton = document.querySelector('.registration-form .btn-primary');
-            if (formSubmitButton) {
-                formSubmitButton.addEventListener('click', function() {
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead');
+                    // GA4 tracking
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'generate_lead', {
+                            'event_category': 'engagement',
+                            'event_label': 'CTA Click - Acessar App'
+                        });
                     }
                 });
-            }
+            });
         });
     </script>
 </body>
