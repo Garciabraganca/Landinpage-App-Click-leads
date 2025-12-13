@@ -700,14 +700,22 @@
             }
         }
 
-        // Meta Pixel Lead event tracking
+        // Meta Pixel + GA4 Lead event tracking
         document.addEventListener('DOMContentLoaded', function() {
             // Track Lead event on all CTA button clicks
             const ctaButtons = document.querySelectorAll('.btn-primary');
             ctaButtons.forEach(function(btn) {
                 btn.addEventListener('click', function() {
+                    // Meta Pixel tracking
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'Lead');
+                    }
+                    // GA4 tracking
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'generate_lead', {
+                            'event_category': 'engagement',
+                            'event_label': 'CTA Click - Acessar App'
+                        });
                     }
                 });
             });
