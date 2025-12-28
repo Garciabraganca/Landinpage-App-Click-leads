@@ -514,16 +514,21 @@
         .story-card {
             position: relative;
             overflow: hidden;
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid var(--border);
-            aspect-ratio: 16/10;
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 18px 50px rgba(0,0,0,.55);
+            aspect-ratio: 16/9;
         }
 
         .story-card img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
             display: block;
+            background: rgba(0,0,0,.4);
         }
 
         .story-card-overlay {
@@ -792,6 +797,110 @@
             font-size: 0.8rem;
             line-height: 1.6;
         }
+
+        /* ===== SECTION MEDIA (Normalização de Imagens) ===== */
+        .section-media {
+            width: 100%;
+            max-width: 520px;
+            margin-inline: auto;
+        }
+
+        .media-card {
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 18px 50px rgba(0,0,0,.55);
+        }
+
+        .media-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .media-fixed {
+            aspect-ratio: 16 / 9;
+        }
+
+        .media-fixed img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== MANÔMETRO SECTION ===== */
+        .manometro-section {
+            padding: 80px 0;
+        }
+
+        .manometro-card {
+            padding: 32px 24px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .manometro-card {
+                padding: 48px;
+            }
+        }
+
+        .manometro-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        @media (min-width: 900px) {
+            .manometro-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 48px;
+            }
+        }
+
+        .manometro-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .manometro-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .manometro-content h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (min-width: 768px) {
+            .manometro-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .manometro-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .btn-sm {
+            padding: 12px 24px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -839,8 +948,8 @@
 
                 <div class="hero-image">
                     <div class="hero-image-card card card-xl">
-                        <img src="clickleads_app1.png" alt="Click Leads 2.0 - Sistema de Leads Inteligente" loading="lazy" style="width: 100%; height: auto; border-radius: 12px;">
-                        <p class="hero-image-caption">⚡ Click Leads 2.0 - O sistema que trabalha por você</p>
+                        <img src="clickleads_app4.png" alt="Click Leads 2.0 - Relançamento Oficial" loading="lazy" style="width: 100%; height: auto; border-radius: 12px;">
+                        <p class="hero-image-caption">Click Leads 2.0 - Relançamento Oficial</p>
                     </div>
                 </div>
             </div>
@@ -915,9 +1024,9 @@
                     </div>
                 </div>
                 <div class="story-card">
-                    <img src="cena_2_andrezinho_ajustando.png" alt="Últimos ajustes antes da entrega" loading="lazy">
+                    <img src="cena_2_andrezinho_ajustando.png" alt="Últimos ajustes antes do dia 05" loading="lazy">
                     <div class="story-card-overlay">
-                        <h3 class="story-card-title">Últimos ajustes antes da entrega</h3>
+                        <h3 class="story-card-title">Últimos ajustes antes do dia 05</h3>
                     </div>
                 </div>
                 <div class="story-card">
@@ -940,18 +1049,17 @@
     <section class="braco-section">
         <div class="container">
             <div class="braco-grid">
-                <div class="braco-image-card card card-xl">
-                    <img src="clickleads_app3.png" alt="Click Leads - O braço direito do corretor" loading="lazy">
+                <div class="braco-image-card card card-xl section-media">
+                    <img src="clickleads_app5.png" alt="Click Leads - O braço direito do corretor" loading="lazy">
                 </div>
 
                 <div class="braco-content">
                     <h2>O Braço Direito<br>do Corretor</h2>
 
                     <ul class="braco-list">
-                        <li>Trocas automáticas do início ao fim</li>
-                        <li>Recuperação ativa sem você perder tempo</li>
-                        <li>Retorno organizado para o corretor — sem caos</li>
-                        <li>Sistema validado no campo de batalha pelo Grupo Garcia</li>
+                        <li>Lead entregue e rastreado</li>
+                        <li>Validação automática</li>
+                        <li>Troca e retorno organizados — sem caos</li>
                     </ul>
                 </div>
             </div>
@@ -1019,6 +1127,29 @@
                     <div class="benefit-icon">🎧</div>
                     <h3>Suporte Humanizado</h3>
                     <p>Treinamento e suporte de quem vive o mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manômetro Section -->
+    <section class="manometro-section">
+        <div class="container">
+            <div class="manometro-card card card-xl">
+                <div class="manometro-grid">
+                    <div class="manometro-image section-media">
+                        <img src="cena_4_manometro_limite.png" alt="Capacidade quase no limite" loading="lazy">
+                    </div>
+                    <div class="manometro-content">
+                        <h2>Capacidade Quase<br>no Limite</h2>
+                        <p>
+                            Para manter a qualidade, liberamos vagas por janela.
+                            Dia <strong>05/01</strong> o sistema volta e as confirmações fecham rápido.
+                        </p>
+                        <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary btn-sm">
+                            QUERO GARANTIR MEU PACOTE
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
