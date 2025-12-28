@@ -441,6 +441,157 @@
             font-size: 0.95rem;
         }
 
+        /* Urgency Banner */
+        .urgency-banner {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4);
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .urgency-banner h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .urgency-banner p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .how-it-works-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .how-it-works-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .how-it-works-list li {
+            background: linear-gradient(135deg, var(--blue-light) 0%, var(--white) 100%);
+            border: 2px solid var(--blue-medium);
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .how-it-works-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .how-it-works-list .step-number {
+            background: var(--blue-medium);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .how-it-works-list .step-text {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .how-it-works-note {
+            text-align: center;
+            margin-top: 25px;
+            padding: 15px 20px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+            color: var(--blue-dark);
+            font-weight: 600;
+        }
+
+        /* Differential Block */
+        .differential-block {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--white);
+        }
+
+        .differential-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .differential-block h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .differential-block p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Capacity Alert */
+        .capacity-alert {
+            padding: 40px 20px;
+            background: #fef3c7;
+            border-top: 3px solid #f59e0b;
+        }
+
+        .capacity-alert-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .capacity-alert h3 {
+            color: #92400e;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .capacity-alert p {
+            color: #78350f;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
         /* Responsive Design */
         @media (min-width: 769px) {
             /* Desktop only - Center hero content */
@@ -514,6 +665,13 @@
         <div class="container hero-content">
             <h1>Chega de Correr Atrás do Vento.<br>Deixe o Cliente Vir Até Você.</h1>
 
+            <!-- Urgency Banner -->
+            <div class="urgency-banner">
+                <span class="urgency-badge">🔴 ENTREGA REINICIA DIA 05</span>
+                <h3>App relançado com trocas automáticas e recuperação em tempo real.</h3>
+                <p>Vagas limitadas para manter a qualidade da entrega.</p>
+            </div>
+
             <p class="hero-subtitle">
                 A tecnologia que o Grupo Garcia criou para transformar leads frios em vendas quentes,
                 sem você precisar gastar energia correndo atrás de prospecção manual. Cadastre-se grátis e
@@ -522,7 +680,7 @@
             </p>
 
             <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary">
-                QUERO ME CADASTRAR E TESTAR AGORA
+                QUERO GARANTIR MEU PACOTE ANTES DO DIA 05
             </a>
 
             <div class="hero-video-preview">
@@ -620,6 +778,34 @@
         </div>
     </section>
 
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container how-it-works-content">
+            <h2 class="section-title">Como Funciona a Click Leads Turbo</h2>
+
+            <ul class="how-it-works-list">
+                <li>
+                    <span class="step-number">1</span>
+                    <span class="step-text">Você recebe leads qualificados diariamente</span>
+                </li>
+                <li>
+                    <span class="step-number">2</span>
+                    <span class="step-text">Se algum lead não atender aos critérios, o sistema recupera automaticamente</span>
+                </li>
+                <li>
+                    <span class="step-number">3</span>
+                    <span class="step-text">O lead é validado em tempo real</span>
+                </li>
+                <li>
+                    <span class="step-number">4</span>
+                    <span class="step-text">A reposição volta para você sem abrir chamado, sem discussão</span>
+                </li>
+            </ul>
+
+            <p class="how-it-works-note">✨ Agora o processo é automático do início ao fim.</p>
+        </div>
+    </section>
+
     <!-- Validation Section -->
     <section class="validation">
         <div class="container validation-content">
@@ -642,6 +828,17 @@
         </div>
     </section>
 
+    <!-- Differential Block -->
+    <section class="differential-block">
+        <div class="container differential-content">
+            <h2>Click Leads não é entrega. É sistema.</h2>
+            <p>
+                A Click Leads evoluiu para operar como o braço direito do corretor.
+                Automatizamos trocas, validações e recuperações para que você foque apenas em vender.
+            </p>
+        </div>
+    </section>
+
     <!-- CTA Final Section -->
     <section class="registration">
         <div class="container" style="text-align: center;">
@@ -654,8 +851,19 @@
             </p>
 
             <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" style="font-size: 1.3rem; padding: 22px 50px; margin-top: 20px;">
-                ACESSAR O APP AGORA
+                QUERO GARANTIR MEU PACOTE ANTES DO DIA 05
             </a>
+        </div>
+    </section>
+
+    <!-- Capacity Alert -->
+    <section class="capacity-alert">
+        <div class="capacity-alert-content">
+            <h3>⚠️ Atenção</h3>
+            <p>
+                Para manter a qualidade da entrega, a Click Leads trabalha com capacidade limitada.
+                Pacotes são liberados conforme disponibilidade do sistema.
+            </p>
         </div>
     </section>
 
