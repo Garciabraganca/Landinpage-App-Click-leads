@@ -536,8 +536,33 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 24px 20px 16px;
-            background: linear-gradient(to top, rgba(0,0,0,.9) 0%, transparent 100%);
+            padding: 24px 20px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .story-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
+            color: #0a0a0a;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .story-cta-btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.4);
         }
 
         .story-card-title {
@@ -1080,19 +1105,19 @@
                 <div class="story-card">
                     <img src="cena_1_maquina_leads.png" alt="Máquina de Leads no limite" loading="lazy">
                     <div class="story-card-overlay">
-                        <h3 class="story-card-title">Máquina de Leads no limite</h3>
+                        <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="story-cta-btn">Acessar Agora</a>
                     </div>
                 </div>
                 <div class="story-card">
                     <img src="cena_2_andrezinho_ajustando.png" alt="Últimos ajustes antes do dia 05" loading="lazy">
                     <div class="story-card-overlay">
-                        <h3 class="story-card-title">Últimos ajustes antes do dia 05</h3>
+                        <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="story-cta-btn">Garantir Meu Pacote</a>
                     </div>
                 </div>
                 <div class="story-card">
                     <img src="cena_4_manometro_limite.png" alt="Manômetro chegando no vermelho" loading="lazy">
                     <div class="story-card-overlay">
-                        <h3 class="story-card-title">Manômetro chegando no vermelho</h3>
+                        <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="story-cta-btn">Entrar na Lista</a>
                     </div>
                 </div>
             </div>
