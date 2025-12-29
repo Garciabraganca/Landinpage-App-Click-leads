@@ -1333,6 +1333,84 @@
         .countdown-section.countdown-bottom .countdown-card {
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
         }
+
+        /* ===== PROVA SOCIAL SECTION ===== */
+        .prova-social-section {
+            padding: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .prova-social-section {
+                padding: 56px 0;
+            }
+        }
+
+        .prova-social-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .prova-social-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+        }
+
+        .prova-social-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 18px 50px rgba(0,0,0,.55);
+            transition: all 0.3s ease;
+        }
+
+        .prova-social-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 25px 60px rgba(0,0,0,.65), 0 0 30px var(--cyan-glow);
+        }
+
+        .prova-social-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .prova-social-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .prova-social-header .pill {
+            margin-bottom: 16px;
+        }
+
+        .prova-social-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .prova-social-cta {
+            text-align: center;
+            margin-top: 32px;
+        }
     </style>
 </head>
 
@@ -1596,6 +1674,39 @@
 
             <div class="how-note">
                 ✨ Agora o processo é automático do início ao fim.
+            </div>
+        </div>
+    </section>
+
+    <!-- Prova Social Section -->
+    <section class="prova-social-section">
+        <div class="container">
+            <div class="prova-social-header">
+                <div class="prova-social-badge">
+                    <span>✅</span> RESULTADOS REAIS
+                </div>
+                <h2 class="section-title">Corretores Já Estão Fechando</h2>
+                <p class="section-subtitle">
+                    Veja os resultados de quem já usa o Click Leads e está convertendo leads em vendas todos os dias.
+                </p>
+            </div>
+
+            <div class="prova-social-grid">
+                <div class="prova-social-card">
+                    <img src="prova_social1.png" alt="Prova Social - Resultado de Corretor" loading="lazy">
+                </div>
+                <div class="prova-social-card">
+                    <img src="prova_social2.png" alt="Prova Social - Resultado de Corretor" loading="lazy">
+                </div>
+                <div class="prova-social-card">
+                    <img src="prova_social3.png" alt="Prova Social - Resultado de Corretor" loading="lazy">
+                </div>
+            </div>
+
+            <div class="prova-social-cta">
+                <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary">
+                    QUERO RESULTADOS ASSIM
+                </a>
             </div>
         </div>
     </section>
