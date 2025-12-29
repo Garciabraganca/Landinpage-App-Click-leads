@@ -1411,6 +1411,72 @@
             text-align: center;
             margin-top: 32px;
         }
+
+        /* ===== CRIATIVO SECTION ===== */
+        .criativo-section {
+            padding: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .criativo-section {
+                padding: 56px 0;
+            }
+        }
+
+        .criativo-card {
+            overflow: hidden;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,.6), 0 0 40px var(--cyan-glow);
+            transition: all 0.3s ease;
+        }
+
+        .criativo-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 30px 70px rgba(0,0,0,.7), 0 0 60px var(--cyan-glow);
+        }
+
+        .criativo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== SOLUÇÃO CASA SECTION ===== */
+        .solucao-casa-section {
+            padding: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .solucao-casa-section {
+                padding: 56px 0;
+            }
+        }
+
+        .solucao-casa-card {
+            overflow: hidden;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,.6), 0 0 40px var(--cyan-glow);
+            transition: all 0.3s ease;
+        }
+
+        .solucao-casa-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 30px 70px rgba(0,0,0,.7), 0 0 60px var(--cyan-glow);
+        }
+
+        .solucao-casa-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
 
@@ -1577,12 +1643,27 @@
                 <div class="prova-social-card">
                     <img src="prova_social3.png" alt="Prova Social - Resultado de Corretor" loading="lazy">
                 </div>
+                <div class="prova-social-card">
+                    <img src="prova_social5.png" alt="Camila - Valorize: Cliente quente é outro jogo!" loading="lazy">
+                </div>
+                <div class="prova-social-card">
+                    <img src="prova_social6.png" alt="Patrícia - Corretora Affinity: Recebi meu primeiro lead em minutos!" loading="lazy">
+                </div>
             </div>
 
             <div class="prova-social-cta">
                 <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary">
                     QUERO RESULTADOS ASSIM
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Criativo Plataforma - Só Você Vai Ficar de Fora? -->
+    <section class="criativo-section">
+        <div class="container">
+            <div class="criativo-card card card-xl">
+                <img src="fica_de_fora1.png" alt="Só Você vai ficar de fora? Parceiros: Affinity, Serra, Valorize, Fcampos, United Class - Click Leads 2.0" loading="lazy">
             </div>
         </div>
     </section>
@@ -1785,6 +1866,15 @@
                     </a>
                 </div>
                 <p class="countdown-urgency">🔒 Vagas limitadas · <strong>Dia 05/01/2026</strong> o sistema reinicia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solução Casa - Família Grupo Garcia -->
+    <section class="solucao-casa-section">
+        <div class="container">
+            <div class="solucao-casa-card card card-xl">
+                <img src="solucao_casa.png" alt="A mesma solução que usamos em casa. Agora na sua mão. - Família Grupo Garcia" loading="lazy">
             </div>
         </div>
     </section>
