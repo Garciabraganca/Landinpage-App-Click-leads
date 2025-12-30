@@ -1477,6 +1477,35 @@
             height: auto;
             display: block;
         }
+
+        /* ===== CTA CLARITY ELEMENTS ===== */
+        .cta-clarity-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        @media (min-width: 900px) {
+            .cta-clarity-text {
+                text-align: left;
+            }
+        }
+
+        .cta-micro-text {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 12px;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        @media (min-width: 900px) {
+            .cta-micro-text {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 
@@ -1548,14 +1577,21 @@
                         Entrega reinicia dia <strong>05/01/2026</strong>. Garanta seu pacote antes da fila fechar.
                     </div>
 
+                    <p class="cta-clarity-text">
+                        Você não precisa pagar agora.<br>
+                        Ao clicar, você cria sua conta gratuita e pode ver o app por dentro.
+                    </p>
+
                     <div class="hero-ctas">
                         <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary">
-                            GARANTIR MEU PACOTE
+                            VER O APP POR DENTRO
                         </a>
                         <a href="#como-funciona" class="btn-outline">
                             Como Funciona
                         </a>
                     </div>
+
+                    <p class="cta-micro-text">Sem pagamento agora • Acesso imediato</p>
                 </div>
 
                 <div class="hero-image">
