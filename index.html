@@ -1583,7 +1583,7 @@
                     </p>
 
                     <div class="hero-ctas">
-                        <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" id="cta-ver-app">
+                        <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary">
                             VER O APP POR DENTRO
                         </a>
                         <a href="#como-funciona" class="btn-outline">
@@ -2011,11 +2011,11 @@
             });
         });
 
-        // GA4 explicit tracking for primary landing CTA (cta_ver_app)
+        // GA4 explicit tracking for all CTA buttons (cta_ver_app)
         document.addEventListener('DOMContentLoaded', function() {
-            var ctaVerApp = document.getElementById('cta-ver-app');
-            if (ctaVerApp) {
-                ctaVerApp.addEventListener('click', function() {
+            var ctaButtons = document.querySelectorAll('.btn-primary');
+            ctaButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'cta_ver_app', {
                             event_category: 'engagement',
@@ -2024,7 +2024,7 @@
                         });
                     }
                 });
-            }
+            });
         });
     </script>
 </body>
