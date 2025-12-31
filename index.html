@@ -2010,6 +2010,22 @@
                 });
             });
         });
+
+        // GA4 explicit tracking for all CTA buttons (cta_ver_app)
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctaButtons = document.querySelectorAll('.btn-primary');
+            ctaButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'cta_ver_app', {
+                            event_category: 'engagement',
+                            event_label: 'ver_app_por_dentro',
+                            page_location: window.location.href
+                        });
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
