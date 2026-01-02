@@ -1506,6 +1506,210 @@
                 text-align: left;
             }
         }
+
+        /* ===== INTENT BLOCK SECTION ===== */
+        .intent-block-section {
+            padding: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .intent-block-section {
+                padding: 56px 0;
+            }
+        }
+
+        .intent-block-card {
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .intent-block-card {
+                padding: 48px;
+            }
+        }
+
+        .intent-block-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (min-width: 768px) {
+            .intent-block-card h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .intent-list {
+            list-style: none;
+            max-width: 500px;
+            margin: 0 auto 32px;
+            text-align: left;
+        }
+
+        .intent-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .intent-list li::before {
+            content: '✓';
+            color: var(--cyan);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .intent-cta-wrapper {
+            text-align: center;
+        }
+
+        .intent-cta-wrapper .cta-micro-text {
+            text-align: center;
+        }
+
+        /* ===== MODAL STYLES ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--bg2) 0%, var(--bg1) 100%);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 24px;
+            padding: 32px 24px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0,0,0,.8), 0 0 60px var(--cyan-glow);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        @media (min-width: 768px) {
+            .modal-content {
+                padding: 48px 40px;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,.1);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,.2);
+            color: var(--text-primary);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 32px;
+            background: linear-gradient(135deg, #fff 0%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (min-width: 768px) {
+            .modal-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        .modal-steps {
+            margin-bottom: 32px;
+        }
+
+        .modal-step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-step:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .modal-step-number {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
+            color: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .modal-step-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-top: 4px;
+        }
+
+        .modal-cta-wrapper {
+            text-align: center;
+        }
+
+        .modal-cta-wrapper .cta-micro-text {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -1586,9 +1790,9 @@
                         <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" data-cta="hero">
                             VER O APP POR DENTRO
                         </a>
-                        <a href="#como-funciona" class="btn-outline">
+                        <button type="button" class="btn-outline" id="open-modal-btn">
                             Como Funciona
-                        </a>
+                        </button>
                     </div>
 
                     <p class="cta-micro-text">Sem pagamento agora • Acesso imediato</p>
@@ -1599,6 +1803,28 @@
                         <img src="clickleads_app4.png" alt="Click Leads 2.0 - Lançamento Oficial" loading="lazy" style="width: 100%; height: auto; border-radius: 12px;">
                         <p class="hero-image-caption">Click Leads 2.0 - Lançamento Oficial</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intent Block Section -->
+    <section class="intent-block-section">
+        <div class="container">
+            <div class="intent-block-card card card-xl">
+                <h3>O que você vê ao entrar no Click Leads 2.0</h3>
+
+                <ul class="intent-list">
+                    <li>Leads entrando automaticamente no painel</li>
+                    <li>Trocas validadas sem abrir chamado</li>
+                    <li>Status, recuperação e histórico em tempo real</li>
+                </ul>
+
+                <div class="intent-cta-wrapper">
+                    <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" data-cta="mid_page">
+                        VER O APP POR DENTRO
+                    </a>
+                    <p class="cta-micro-text">Sem pagamento agora • Acesso imediato</p>
                 </div>
             </div>
         </div>
@@ -1934,6 +2160,37 @@
         </div>
     </footer>
 
+    <!-- Modal Como Funciona -->
+    <div class="modal-overlay" id="como-funciona-modal">
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="close-modal-btn">&times;</button>
+
+            <h2 class="modal-title">Como funciona na prática</h2>
+
+            <div class="modal-steps">
+                <div class="modal-step">
+                    <div class="modal-step-number">1</div>
+                    <div class="modal-step-text">Crie sua conta gratuita</div>
+                </div>
+                <div class="modal-step">
+                    <div class="modal-step-number">2</div>
+                    <div class="modal-step-text">Acesse o painel do app</div>
+                </div>
+                <div class="modal-step">
+                    <div class="modal-step-number">3</div>
+                    <div class="modal-step-text">Ative seu pacote quando quiser</div>
+                </div>
+            </div>
+
+            <div class="modal-cta-wrapper">
+                <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" data-cta="modal">
+                    VER O APP POR DENTRO
+                </a>
+                <p class="cta-micro-text">Sem pagamento agora • Acesso imediato</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Countdown Timer - Target: 05 de Janeiro de 2026, 00:00:00 (Horário de São Paulo)
         function initCountdown() {
@@ -2057,6 +2314,102 @@
                                 event_category: 'engagement',
                                 event_label: ctaName,
                                 cta_position: ctaName,
+                                page_location: window.location.href
+                            });
+                        }
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('como-funciona-modal');
+            var openBtn = document.getElementById('open-modal-btn');
+            var closeBtn = document.getElementById('close-modal-btn');
+
+            function openModal() {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (openBtn) {
+                openBtn.addEventListener('click', openModal);
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+
+            // Close modal when clicking outside content
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+
+        // GA4 intent_view_app tracking for high-intent CTAs (mid_page and modal)
+        // Fires for data-cta="mid_page" and data-cta="modal"
+        document.addEventListener('DOMContentLoaded', function() {
+            var intentCtaSelectors = '[data-cta="mid_page"], [data-cta="modal"]';
+            var intentButtons = document.querySelectorAll(intentCtaSelectors);
+
+            intentButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    var ctaPosition = btn.getAttribute('data-cta') || 'unknown';
+                    var href = btn.tagName === 'A' ? btn.href : null;
+
+                    function sendIntentEventThenGo() {
+                        var navigated = false;
+                        var go = function() {
+                            if (navigated) return;
+                            navigated = true;
+                            if (href) {
+                                window.location.href = href;
+                            }
+                        };
+
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'intent_view_app', {
+                                event_category: 'engagement',
+                                event_label: 'alta_intencao',
+                                cta_position: ctaPosition,
+                                page_location: window.location.href,
+                                event_callback: go
+                            });
+                            // Fallback timeout in case callback fails
+                            setTimeout(go, 300);
+                        } else {
+                            go();
+                        }
+                    }
+
+                    // For links, prevent default and handle navigation after event
+                    if (href) {
+                        e.preventDefault();
+                        sendIntentEventThenGo();
+                    } else {
+                        // For non-link elements, just send the event
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'intent_view_app', {
+                                event_category: 'engagement',
+                                event_label: 'alta_intencao',
+                                cta_position: ctaPosition,
                                 page_location: window.location.href
                             });
                         }
