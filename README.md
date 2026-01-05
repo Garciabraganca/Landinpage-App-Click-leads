@@ -28,11 +28,11 @@ A Vercel faz o deploy instantâneo.
 Para evitar conflitos ao mesclar branches com atualizações em arquivos binários (vídeos e imagens), os
 assets foram marcados como binários e configurados para manter a versão da sua branch durante o merge.
 
-Se você já estiver no meio de um conflito, descarte o lado remoto para todos os assets e finalize o merge:
+Se você já estiver no meio de um conflito em `video-app.mp4`, use o script auxiliar e finalize o merge:
 
 ```bash
-git checkout --ours *.mp4 *.png *.jpg *.jpeg
-git add *.mp4 *.png *.jpg *.jpeg
+chmod +x scripts/resolve-video-conflict.sh
+./scripts/resolve-video-conflict.sh
 git commit --no-edit
 ```
 

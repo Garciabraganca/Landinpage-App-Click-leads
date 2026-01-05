@@ -1,4 +1,6 @@
 # Treat media assets as binary to avoid noisy diffs and prefer our branch on merges
+# Explicit path ensures GitHub applies the driver when this PR is merged.
+video-app.mp4 binary merge=ours
 *.mp4 binary merge=ours
 *.png binary merge=ours
 *.jpg binary merge=ours
