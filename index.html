@@ -1793,6 +1793,93 @@
             }
         }
 
+        /* ===== CAMPAIGN TYPES SECTION ===== */
+        .campaign-section {
+            padding: 48px 0;
+        }
+
+        @media (min-width: 768px) {
+            .campaign-section {
+                padding: 72px 0;
+            }
+        }
+
+        .campaign-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .campaign-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 16px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (min-width: 768px) {
+            .campaign-title {
+                font-size: 2rem;
+            }
+        }
+
+        .campaign-subtitle {
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .campaign-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .campaign-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .campaign-card {
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,.45);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 30px 60px rgba(0,0,0,.55), 0 0 30px var(--cyan-glow);
+        }
+
+        .campaign-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .campaign-info {
+            padding: 16px 18px 20px;
+        }
+
+        .campaign-info h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .campaign-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         /* ===== INTENT BLOCK SECTION ===== */
         .intent-block-section {
             padding: 40px 0;
@@ -2079,8 +2166,45 @@
 
                 <div class="hero-image">
                     <div class="hero-image-card card card-xl">
-                        <img src="clickleads_app4.png" alt="Click Leads 2.0 - Lançamento Oficial" loading="lazy" style="width: 100%; height: auto; border-radius: 12px;">
-                        <p class="hero-image-caption">Click Leads 2.0 - Lançamento Oficial</p>
+                        <img src="alerta_de_venda.jpeg" alt="Alerta de vendas - campanha SulAmérica" loading="lazy" style="width: 100%; height: auto; border-radius: 12px;">
+                        <p class="hero-image-caption">Alerta de vendas - campanha SulAmérica</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign Types Section -->
+    <section class="campaign-section" id="campanhas">
+        <div class="container">
+            <div class="campaign-header">
+                <div class="pill">Portfólio de campanhas</div>
+                <h2 class="campaign-title">Tipos de lead e campanhas que trabalhamos</h2>
+                <p class="campaign-subtitle">Mostre aos seus clientes os materiais que usamos para atrair leads qualificados em diferentes perfis e segmentos.</p>
+            </div>
+
+            <div class="campaign-grid">
+                <div class="campaign-card">
+                    <img src="Vila_Nova_Star.png" alt="Campanha SulAmérica + Vila Nova Star - Plano Premium" loading="lazy">
+                    <div class="campaign-info">
+                        <h4>Vila Nova Star – Plano Premium em SP</h4>
+                        <p>Campanha premium SulAmérica destacando atendimento exclusivo no Vila Nova Star e planos a partir de R$ 596,46.</p>
+                    </div>
+                </div>
+
+                <div class="campaign-card">
+                    <img src="Vila_Nova_Star2.png" alt="Campanha de planos com Vila Nova Star" loading="lazy">
+                    <div class="campaign-info">
+                        <h4>Vila Nova Star – Leads de alta renda</h4>
+                        <p>Posicionamento com foco em reembolso e consultas, reforçando resposta imediata para prospects qualificados.</p>
+                    </div>
+                </div>
+
+                <div class="campaign-card">
+                    <img src="são_luiz_morumbi.png" alt="Campanha São Luiz Morumbi para empresas" loading="lazy">
+                    <div class="campaign-info">
+                        <h4>São Luiz Morumbi – PME e corporate</h4>
+                        <p>Leads empresariais com oferta de planos a partir de R$ 436,01 e destaque para atendimento ágil.</p>
                     </div>
                 </div>
             </div>
