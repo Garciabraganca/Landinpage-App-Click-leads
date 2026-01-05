@@ -1128,6 +1128,15 @@
             border: 1px solid var(--border);
         }
 
+        .preview-image video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #000;
+        }
+
         .preview-features {
             display: flex;
             flex-direction: column;
@@ -2357,14 +2366,17 @@
     <!-- Preview do Sistema Section -->
     <section class="preview-section">
         <div class="container">
-            <h2 class="section-title">Veja o Sistema em Ação</h2>
+            <h2 class="section-title">Veja o App por Dentro</h2>
             <p class="section-subtitle">
-                Interface intuitiva que coloca você no controle dos seus leads.
+                Assista ao tour rápido do Click Leads 2.0 e veja a navegação real em produção máxima.
             </p>
 
             <div class="preview-card card card-xl">
                 <div class="preview-image section-media">
-                    <img src="clickleads_app1.png" alt="Click Leads 2.0 - Interface do Sistema" loading="lazy">
+                    <video class="preview-video" controls playsinline preload="metadata" poster="clickleads_app1.png" controlsList="nodownload noremoteplayback">
+                        <source src="./video-app.mp4" type="video/mp4">
+                        Seu navegador não suporta a reprodução de vídeo.
+                    </video>
                 </div>
                 <div class="preview-features">
                     <div class="preview-feature">
@@ -2462,7 +2474,7 @@
                         <h2>Capacidade Quase<br>no Limite</h2>
                         <p>
                             Para manter a qualidade, liberamos vagas por janela.
-                            Dia <strong>05/01</strong> o sistema volta e as confirmações fecham rápido.
+                            Estamos operando em produção máxima e as confirmações fecham rápido.
                         </p>
                         <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary btn-sm" data-cta="plans_table">
                             QUERO GARANTIR MEU PACOTE
@@ -2477,14 +2489,14 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-card card card-xl">
-                <h2>Ative Seu Pacote<br>Para o Dia 05</h2>
+                <h2>Ative Seu Pacote<br>Agora Mesmo</h2>
                 <p>
                     Cadastre-se grátis e comece comprando leads avulsos a partir de R$ 60,
                     sem fidelidade e sem pacote mínimo.
                 </p>
 
                 <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" style="font-size: 1.15rem; padding: 20px 40px;" data-cta="footer">
-                    GARANTIR MEU PACOTE ANTES DO DIA 05
+                    GARANTIR MEU PACOTE AGORA
                 </a>
 
                 <p class="cta-micro">
