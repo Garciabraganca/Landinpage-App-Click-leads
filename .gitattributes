@@ -1,2 +1,5 @@
-*.mp4 binary
-*.mp4 merge=ours
+# Treat media assets as binary to avoid noisy diffs and prefer our branch on merges
+*.mp4 binary merge=ours
+*.png binary merge=ours
+*.jpg binary merge=ours
+*.jpeg binary merge=ours
