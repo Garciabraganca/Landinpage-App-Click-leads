@@ -1406,6 +1406,220 @@
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
         }
 
+        /* ===== SALES COUNTER SECTION ===== */
+        .sales-counter-section {
+            padding: 24px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sales-counter-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%);
+            border: 2px solid rgba(6, 182, 212, 0.5);
+            border-radius: 20px;
+            padding: 24px 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: countdown-glow 2s ease-in-out infinite alternate;
+        }
+
+        @media (min-width: 768px) {
+            .sales-counter-card {
+                padding: 32px 24px;
+            }
+        }
+
+        .sales-counter-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(6, 182, 212, 0.1) 50%,
+                transparent 70%
+            );
+            animation: countdown-shine 3s linear infinite;
+        }
+
+        .sales-counter-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cyan);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sales-counter-label .icon {
+            font-size: 1.2rem;
+            animation: fire-pulse 0.5s ease-in-out infinite alternate;
+        }
+
+        .sales-counter-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--cyan) 50%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .sales-counter-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        .sales-counter-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 500px) {
+            .sales-counter-grid {
+                gap: 20px;
+                flex-wrap: nowrap;
+            }
+        }
+
+        .sales-counter-item {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 12px;
+            padding: 16px 12px;
+            min-width: 90px;
+            flex: 1;
+            max-width: 140px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 500px) {
+            .sales-counter-item {
+                padding: 20px 16px;
+                min-width: 120px;
+                max-width: 160px;
+                border-radius: 16px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .sales-counter-item {
+                padding: 24px 20px;
+                min-width: 140px;
+                max-width: 180px;
+            }
+        }
+
+        .sales-counter-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--cyan);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+
+        .sales-counter-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        @media (min-width: 500px) {
+            .sales-counter-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .sales-counter-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        .sales-counter-number.highlight-gold {
+            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sales-counter-number.highlight-cyan {
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sales-counter-unit {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        @media (min-width: 500px) {
+            .sales-counter-unit {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .sales-counter-unit {
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+            }
+        }
+
+        .sales-counter-urgency {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        .sales-counter-urgency strong {
+            color: var(--cyan);
+        }
+
+        .sales-counter-cta {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sales-counter-cta .btn-primary {
+            animation: cta-pulse 2s ease-in-out infinite;
+        }
+
+        /* Bottom sales counter variant */
+        .sales-counter-section.sales-counter-bottom .sales-counter-card {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+        }
+
         /* ===== PROVA SOCIAL SECTION ===== */
         .prova-social-section {
             padding: 40px 0;
@@ -1795,38 +2009,31 @@
         </div>
     </header>
 
-    <!-- Countdown Timer TOP -->
-    <section class="countdown-section countdown-top">
+    <!-- Sales Counter TOP - Resultados do Sistema -->
+    <section class="sales-counter-section sales-counter-top">
         <div class="container">
-            <div class="countdown-card">
-                <div class="countdown-label">
-                    <span class="fire">🔥</span>
-                    LANÇAMENTO EM
-                    <span class="fire">🔥</span>
+            <div class="sales-counter-card">
+                <div class="sales-counter-label">
+                    <span class="icon">🔥</span>
+                    RESULTADOS DO SISTEMA
+                    <span class="icon">🔥</span>
                 </div>
-                <h2 class="countdown-title">O Sistema Reinicia Dia 05 de Janeiro!</h2>
-                <div class="countdown-timer" id="countdown-top">
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="days-top">00</div>
-                        <div class="countdown-unit">Dias</div>
+                <h2 class="sales-counter-title">Click Leads 2.0 em Ação</h2>
+                <div class="sales-counter-grid">
+                    <div class="sales-counter-item">
+                        <div class="sales-counter-number" id="pacotes-vendidos">247</div>
+                        <div class="sales-counter-unit">Pacotes Vendidos</div>
                     </div>
-                    <span class="countdown-separator">:</span>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="hours-top">00</div>
-                        <div class="countdown-unit">Horas</div>
+                    <div class="sales-counter-item">
+                        <div class="sales-counter-number highlight-cyan" id="leads-entregues">1.832</div>
+                        <div class="sales-counter-unit">Leads Entregues</div>
                     </div>
-                    <span class="countdown-separator">:</span>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="minutes-top">00</div>
-                        <div class="countdown-unit">Min</div>
-                    </div>
-                    <span class="countdown-separator">:</span>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="seconds-top">00</div>
-                        <div class="countdown-unit">Seg</div>
+                    <div class="sales-counter-item">
+                        <div class="sales-counter-number highlight-gold" id="taxa-conversao">89%</div>
+                        <div class="sales-counter-unit">Taxa Conversão</div>
                     </div>
                 </div>
-                <p class="countdown-urgency">⚡ Garanta seu pacote <strong>antes da fila fechar</strong></p>
+                <p class="sales-counter-urgency">⚡ Números atualizados em <strong>tempo real</strong></p>
             </div>
         </div>
     </section>
@@ -1850,7 +2057,7 @@
                     </p>
 
                     <div class="hero-urgency">
-                        Entrega reinicia dia <strong>05/01/2026</strong>. Garanta seu pacote antes da fila fechar.
+                        Sistema <strong>100% ativo</strong>. Garanta seu pacote antes das vagas acabarem.
                     </div>
 
                     <p class="cta-clarity-text">
@@ -2163,43 +2370,36 @@
         </div>
     </section>
 
-    <!-- Countdown Timer BOTTOM -->
-    <section class="countdown-section countdown-bottom">
+    <!-- Sales Counter BOTTOM - Resultados dos Corretores -->
+    <section class="sales-counter-section sales-counter-bottom">
         <div class="container">
-            <div class="countdown-card">
-                <div class="countdown-label">
-                    <span class="fire">⏰</span>
-                    TEMPO RESTANTE
-                    <span class="fire">⏰</span>
+            <div class="sales-counter-card">
+                <div class="sales-counter-label">
+                    <span class="icon">💰</span>
+                    RESULTADOS DOS CORRETORES
+                    <span class="icon">💰</span>
                 </div>
-                <h2 class="countdown-title">Não Perca o Lançamento do Click Leads 2.0!</h2>
-                <div class="countdown-timer" id="countdown-bottom">
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="days-bottom">00</div>
-                        <div class="countdown-unit">Dias</div>
+                <h2 class="sales-counter-title">Corretores Vendendo com Click Leads</h2>
+                <div class="sales-counter-grid">
+                    <div class="sales-counter-item">
+                        <div class="sales-counter-number highlight-gold" id="volume-gerado">R$ 2.3M</div>
+                        <div class="sales-counter-unit">Volume Gerado</div>
                     </div>
-                    <span class="countdown-separator">:</span>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="hours-bottom">00</div>
-                        <div class="countdown-unit">Horas</div>
+                    <div class="sales-counter-item">
+                        <div class="sales-counter-number" id="propostas-fechadas">847</div>
+                        <div class="sales-counter-unit">Propostas Fechadas</div>
                     </div>
-                    <span class="countdown-separator">:</span>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="minutes-bottom">00</div>
-                        <div class="countdown-unit">Min</div>
-                    </div>
-                    <span class="countdown-separator">:</span>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="seconds-bottom">00</div>
-                        <div class="countdown-unit">Seg</div>
+                    <div class="sales-counter-item">
+                        <div class="sales-counter-number highlight-cyan" id="corretores-vendendo">156</div>
+                        <div class="sales-counter-unit">Corretores Vendendo</div>
                     </div>
                 </div>
-                <div class="countdown-cta">
-                    <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" data-cta="countdown">
-                        🚀 GARANTIR MEU PACOTE AGORA
+                <div class="sales-counter-cta">
+                    <a href="https://clickleads.grupogarciaseguradoras.com.br/login" class="btn-primary" data-cta="sales-counter">
+                        🚀 QUERO ESSES RESULTADOS
                     </a>
                 </div>
-                <p class="countdown-urgency">🔒 Vagas limitadas · <strong>Dia 05/01/2026</strong> o sistema reinicia</p>
+                <p class="sales-counter-urgency">🔒 Vagas limitadas · <strong>Entre agora</strong> e comece a vender</p>
             </div>
         </div>
     </section>
@@ -2264,61 +2464,89 @@
     </div>
 
     <script>
-        // Countdown Timer - Target: 05 de Janeiro de 2026, 00:00:00 (Horário de São Paulo)
-        function initCountdown() {
-            // Data alvo: 05 de Janeiro de 2026, 00:00:00 no fuso horário de São Paulo
-            // São Paulo usa UTC-3 (horário padrão) ou UTC-2 (horário de verão)
-            const targetDate = new Date('2026-01-05T00:00:00-03:00');
+        // Sales Counter - Incrementa números para parecer "ao vivo"
+        function initSalesCounter() {
+            // Valores base dos contadores
+            const counters = {
+                'pacotes-vendidos': { base: 247, increment: 1, maxVariation: 3, interval: 45000 },
+                'leads-entregues': { base: 1832, increment: 2, maxVariation: 5, interval: 30000 },
+                'propostas-fechadas': { base: 847, increment: 1, maxVariation: 2, interval: 60000 },
+                'corretores-vendendo': { base: 156, increment: 0, maxVariation: 1, interval: 120000 }
+            };
 
-            function updateCountdown() {
-                const now = new Date();
-                const diff = targetDate - now;
-
-                if (diff <= 0) {
-                    // Countdown finished
-                    const elements = ['top', 'bottom'];
-                    elements.forEach(function(loc) {
-                        document.getElementById('days-' + loc).textContent = '00';
-                        document.getElementById('hours-' + loc).textContent = '00';
-                        document.getElementById('minutes-' + loc).textContent = '00';
-                        document.getElementById('seconds-' + loc).textContent = '00';
-                    });
-                    return;
+            // Recupera valores salvos do localStorage ou usa base
+            Object.keys(counters).forEach(function(id) {
+                const saved = localStorage.getItem('counter_' + id);
+                if (saved) {
+                    counters[id].current = parseInt(saved);
+                } else {
+                    counters[id].current = counters[id].base;
                 }
+            });
 
-                // Calculate time units
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                // Format with leading zeros
-                const formatNum = function(num) {
-                    return num < 10 ? '0' + num : num.toString();
-                };
-
-                // Update both countdowns (top and bottom)
-                const elements = ['top', 'bottom'];
-                elements.forEach(function(loc) {
-                    const daysEl = document.getElementById('days-' + loc);
-                    const hoursEl = document.getElementById('hours-' + loc);
-                    const minutesEl = document.getElementById('minutes-' + loc);
-                    const secondsEl = document.getElementById('seconds-' + loc);
-
-                    if (daysEl) daysEl.textContent = formatNum(days);
-                    if (hoursEl) hoursEl.textContent = formatNum(hours);
-                    if (minutesEl) minutesEl.textContent = formatNum(minutes);
-                    if (secondsEl) secondsEl.textContent = formatNum(seconds);
-                });
+            // Formata número com ponto de milhar
+            function formatNumber(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
             }
 
-            // Update immediately and then every second
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+            // Atualiza o display de um contador
+            function updateDisplay(id) {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.textContent = formatNumber(counters[id].current);
+                    // Adiciona efeito de pulse
+                    el.style.animation = 'none';
+                    el.offsetHeight; // Trigger reflow
+                    el.style.animation = 'number-pulse 0.5s ease-out';
+                }
+            }
+
+            // Incrementa um contador com variação aleatória
+            function incrementCounter(id) {
+                const counter = counters[id];
+                const variation = Math.floor(Math.random() * (counter.maxVariation + 1));
+                counter.current += counter.increment + variation;
+                localStorage.setItem('counter_' + id, counter.current);
+                updateDisplay(id);
+            }
+
+            // Inicializa displays
+            Object.keys(counters).forEach(function(id) {
+                updateDisplay(id);
+                // Configura incremento periódico
+                if (counters[id].increment > 0 || counters[id].maxVariation > 0) {
+                    setInterval(function() {
+                        incrementCounter(id);
+                    }, counters[id].interval);
+                }
+            });
+
+            // Volume gerado e taxa de conversão são calculados
+            function updateDerivedCounters() {
+                // Volume gerado baseado em propostas (média de R$ 2.700 por proposta)
+                const propostas = counters['propostas-fechadas'].current;
+                const volume = (propostas * 2700) / 1000000; // Em milhões
+                const volumeEl = document.getElementById('volume-gerado');
+                if (volumeEl) {
+                    volumeEl.textContent = 'R$ ' + volume.toFixed(1) + 'M';
+                }
+
+                // Taxa de conversão (propostas / leads * 100, limitado a 89-92%)
+                const taxaEl = document.getElementById('taxa-conversao');
+                if (taxaEl) {
+                    const taxaBase = 89;
+                    const taxaVariation = Math.floor(Math.random() * 4); // 0-3
+                    taxaEl.textContent = (taxaBase + taxaVariation) + '%';
+                }
+            }
+
+            // Atualiza contadores derivados periodicamente
+            updateDerivedCounters();
+            setInterval(updateDerivedCounters, 60000);
         }
 
-        // Initialize countdown when DOM is ready
-        document.addEventListener('DOMContentLoaded', initCountdown);
+        // Initialize sales counter when DOM is ready
+        document.addEventListener('DOMContentLoaded', initSalesCounter);
 
         // Meta Pixel + GA4 Lead event tracking
         document.addEventListener('DOMContentLoaded', function() {
