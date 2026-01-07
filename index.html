@@ -2679,6 +2679,7 @@
                     // Meta Pixel tracking
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'Lead');
+                        fbq('track', 'Purchase', {currency: 'BRL', value: 0});
                     }
                     // GA4 tracking
                     if (typeof gtag !== 'undefined') {
