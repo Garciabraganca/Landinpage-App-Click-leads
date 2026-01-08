@@ -4,38 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Leads 2.0 - Lançamento Oficial</title>
+    <meta name="description" content="Click Leads 2.0 - Sistema de leads qualificados em tempo real para corretores de seguros. Leads segmentados, validação instantânea e trocas automáticas.">
+    <meta name="theme-color" content="#0B1220">
 
-    <!-- Preload Critical Assets (HERO image) -->
-    <link rel="preload" as="image" type="image/webp" href="alerta_de_venda.webp" fetchpriority="high">
+    <!-- Preconnect to tracking domains (improves third-party performance) -->
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    <!-- Preload Critical Assets (HERO image - mobile optimized) -->
+    <link rel="preload" as="image" type="image/webp" href="alerta_de_venda.webp" fetchpriority="high" media="(max-width: 899px)">
+    <link rel="preload" as="image" type="image/webp" href="alerta_de_venda.webp" fetchpriority="high" media="(min-width: 900px)">
     <link rel="preload" as="image" type="image/webp" href="logo-clickleads.webp">
 
-    <!-- Meta Pixel Code -->
+    <!-- Deferred Analytics (loaded after LCP to avoid render-blocking) -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1184246869368178');
-    fbq('track', 'PageView');
+    // Defer tracking scripts until after page is interactive
+    function loadTrackingScripts() {
+        // Meta Pixel Code
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1184246869368178');
+        fbq('track', 'PageView');
+
+        // Google Tag (gtag.js)
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-WLZ8LBE27B';
+        document.head.appendChild(gtagScript);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-WLZ8LBE27B');
+    }
+    // Use requestIdleCallback or fallback to setTimeout for non-critical scripts
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadTrackingScripts, { timeout: 3000 });
+    } else {
+        setTimeout(loadTrackingScripts, 2000);
+    }
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1184246869368178&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLZ8LBE27B"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-WLZ8LBE27B');
-    </script>
-    <!-- End Google tag -->
 
     <style>
         /* ===== CSS VARIABLES ===== */
@@ -2141,9 +2160,14 @@
                 display: none;
             }
 
-            /* Simplify grid overlay */
+            /* Disable grid overlay completely on mobile (GPU expensive) */
             body::before {
-                background-size: 100px 100px;
+                display: none;
+            }
+
+            /* Reduce paint complexity */
+            .hero::before {
+                display: none;
             }
 
             /* Remove hover transforms on touch devices */
@@ -2154,6 +2178,24 @@
             .solucao-casa-card:hover,
             .campaign-card:hover {
                 transform: none;
+            }
+
+            /* Simplify body background gradient for mobile */
+            body {
+                background: linear-gradient(180deg, var(--bg2) 0%, var(--bg0) 100%);
+            }
+
+            /* Disable transitions for faster paint */
+            .btn-primary,
+            .btn-outline,
+            .how-step,
+            .campaign-card {
+                transition: none;
+            }
+
+            /* Contain paint for better performance */
+            .container {
+                contain: layout style;
             }
         }
     </style>
