@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Leads 2.0 - Lançamento Oficial</title>
 
+    <!-- Preload Critical Assets (HERO image) -->
+    <link rel="preload" as="image" type="image/webp" href="alerta_de_venda.webp" fetchpriority="high">
+    <link rel="preload" as="image" type="image/webp" href="logo-clickleads.webp">
+
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -2083,6 +2087,75 @@
         .modal-cta-wrapper .cta-micro-text {
             text-align: center;
         }
+
+        /* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
+        /* Reduce heavy effects on mobile to improve LCP/GPU performance */
+        @media (max-width: 768px) {
+            /* Disable backdrop-filter on mobile (GPU expensive) */
+            .card,
+            .logo-box,
+            .prova-social-card,
+            .modal-overlay,
+            .countdown-item,
+            .sales-counter-item {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
+            /* Reduce box-shadows on mobile */
+            .card,
+            .prova-social-card,
+            .criativo-card,
+            .solucao-casa-card,
+            .campaign-card {
+                box-shadow: 0 8px 20px rgba(0,0,0,.3);
+            }
+
+            /* Simplify glow effects */
+            .pill,
+            .btn-primary {
+                box-shadow: none;
+            }
+
+            /* Disable heavy animations on mobile */
+            .countdown-card,
+            .sales-counter-card {
+                animation: none;
+            }
+
+            .countdown-card::before,
+            .sales-counter-card::before {
+                display: none;
+            }
+
+            .countdown-number {
+                animation: none;
+            }
+
+            .btn-como-funciona {
+                animation: none;
+                box-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+            }
+
+            .btn-como-funciona::before {
+                display: none;
+            }
+
+            /* Simplify grid overlay */
+            body::before {
+                background-size: 100px 100px;
+            }
+
+            /* Remove hover transforms on touch devices */
+            .prova-social-card:hover,
+            .benefit-card:hover,
+            .how-step:hover,
+            .criativo-card:hover,
+            .solucao-casa-card:hover,
+            .campaign-card:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 
@@ -2091,7 +2164,10 @@
     <header class="header">
         <div class="container">
             <div class="logo-box">
-                <img src="logo-clickleads.png" alt="Click Leads" loading="lazy">
+                <picture>
+                    <source srcset="logo-clickleads.webp" type="image/webp">
+                    <img src="logo-clickleads.png" alt="Click Leads" width="500" height="500" fetchpriority="high">
+                </picture>
             </div>
         </div>
     </header>
@@ -2165,7 +2241,10 @@
 
                 <div class="hero-image">
                     <div class="hero-image-card card card-xl">
-                        <img src="alerta_de_venda.jpeg" alt="Alerta de vendas - campanha SulAmérica" loading="lazy" style="width: 100%; height: auto; border-radius: 12px;">
+                        <picture>
+                            <source srcset="alerta_de_venda.webp" type="image/webp">
+                            <img src="alerta_de_venda.jpeg" alt="Alerta de vendas - campanha SulAmérica" width="1080" height="1350" style="width: 100%; height: auto; border-radius: 12px;" fetchpriority="high" decoding="async">
+                        </picture>
                         <p class="hero-image-caption">Alerta de vendas - campanha SulAmérica</p>
                     </div>
                 </div>
@@ -2184,7 +2263,10 @@
 
             <div class="campaign-grid">
                 <div class="campaign-card">
-                    <img src="Vila_Nova_Star.png" alt="Campanha SulAmérica + Vila Nova Star - Plano Premium" loading="lazy">
+                    <picture>
+                        <source srcset="Vila_Nova_Star.webp" type="image/webp">
+                        <img src="Vila_Nova_Star.png" alt="Campanha SulAmérica + Vila Nova Star - Plano Premium" width="1024" height="1024" loading="lazy" decoding="async">
+                    </picture>
                     <div class="campaign-info">
                         <h4>Vila Nova Star – Plano Premium em SP</h4>
                         <p>Campanha premium SulAmérica destacando atendimento exclusivo no Vila Nova Star e planos a partir de R$ 596,46.</p>
@@ -2192,7 +2274,10 @@
                 </div>
 
                 <div class="campaign-card">
-                    <img src="Vila_Nova_Star2.png" alt="Campanha de planos com Vila Nova Star" loading="lazy">
+                    <picture>
+                        <source srcset="Vila_Nova_Star2.webp" type="image/webp">
+                        <img src="Vila_Nova_Star2.png" alt="Campanha de planos com Vila Nova Star" width="1080" height="1080" loading="lazy" decoding="async">
+                    </picture>
                     <div class="campaign-info">
                         <h4>Vila Nova Star – Leads de alta renda</h4>
                         <p>Posicionamento com foco em reembolso e consultas, reforçando resposta imediata para prospects qualificados.</p>
@@ -2200,7 +2285,10 @@
                 </div>
 
                 <div class="campaign-card">
-                    <img src="são_luiz_morumbi.png" alt="Campanha São Luiz Morumbi para empresas" loading="lazy">
+                    <picture>
+                        <source srcset="são_luiz_morumbi.webp" type="image/webp">
+                        <img src="são_luiz_morumbi.png" alt="Campanha São Luiz Morumbi para empresas" width="1024" height="1024" loading="lazy" decoding="async">
+                    </picture>
                     <div class="campaign-info">
                         <h4>São Luiz Morumbi – PME e corporate</h4>
                         <p>Leads empresariais com oferta de planos a partir de R$ 436,01 e destaque para atendimento ágil.</p>
@@ -2299,19 +2387,34 @@
 
             <div class="prova-social-grid">
                 <div class="prova-social-card">
-                    <img src="prova_social1.png" alt="Prova Social - Resultado de Corretor" loading="lazy">
+                    <picture>
+                        <source srcset="prova_social1.webp" type="image/webp">
+                        <img src="prova_social1.png" alt="Prova Social - Resultado de Corretor" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
                 </div>
                 <div class="prova-social-card">
-                    <img src="prova_social2.png" alt="Prova Social - Resultado de Corretor" loading="lazy">
+                    <picture>
+                        <source srcset="prova_social2.webp" type="image/webp">
+                        <img src="prova_social2.png" alt="Prova Social - Resultado de Corretor" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
                 </div>
                 <div class="prova-social-card">
-                    <img src="prova_social3.png" alt="Prova Social - Resultado de Corretor" loading="lazy">
+                    <picture>
+                        <source srcset="prova_social3.webp" type="image/webp">
+                        <img src="prova_social3.png" alt="Prova Social - Resultado de Corretor" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
                 </div>
                 <div class="prova-social-card">
-                    <img src="prova_social5.png" alt="Camila - Valorize: Cliente quente é outro jogo!" loading="lazy">
+                    <picture>
+                        <source srcset="prova_social5.webp" type="image/webp">
+                        <img src="prova_social5.png" alt="Camila - Valorize: Cliente quente é outro jogo!" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
                 </div>
                 <div class="prova-social-card">
-                    <img src="prova_social6.png" alt="Patrícia - Corretora Affinity: Recebi meu primeiro lead em minutos!" loading="lazy">
+                    <picture>
+                        <source srcset="prova_social6.webp" type="image/webp">
+                        <img src="prova_social6.png" alt="Patrícia - Corretora Affinity: Recebi meu primeiro lead em minutos!" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
                 </div>
             </div>
 
@@ -2327,7 +2430,10 @@
     <section class="criativo-section">
         <div class="container">
             <div class="criativo-card card card-xl">
-                <img src="fica_de_fora1.png" alt="Só Você vai ficar de fora? Parceiros: Affinity, Serra, Valorize, Fcampos, United Class - Click Leads 2.0" loading="lazy">
+                <picture>
+                    <source srcset="fica_de_fora1.webp" type="image/webp">
+                    <img src="fica_de_fora1.png" alt="Só Você vai ficar de fora? Parceiros: Affinity, Serra, Valorize, Fcampos, United Class - Click Leads 2.0" width="1024" height="1024" loading="lazy" decoding="async">
+                </picture>
             </div>
         </div>
     </section>
@@ -2337,7 +2443,10 @@
         <div class="container">
             <div class="braco-grid">
                 <div class="braco-image-card card card-xl section-media">
-                    <img src="clickleads_app5.png" alt="Click Leads - O braço direito do corretor" loading="lazy">
+                    <picture>
+                        <source srcset="clickleads_app5.webp" type="image/webp">
+                        <img src="clickleads_app5.png" alt="Click Leads - O braço direito do corretor" width="1024" height="1024" loading="lazy" decoding="async">
+                    </picture>
                 </div>
 
                 <div class="braco-content">
@@ -2363,7 +2472,10 @@
 
             <div class="preview-card card card-xl">
                 <div class="preview-image section-media">
-                    <img src="clickleads_app1.png" alt="Click Leads 2.0 - Interface do Sistema" loading="lazy">
+                    <picture>
+                        <source srcset="clickleads_app1.webp" type="image/webp">
+                        <img src="clickleads_app1.png" alt="Click Leads 2.0 - Interface do Sistema" width="1024" height="1024" loading="lazy" decoding="async">
+                    </picture>
                 </div>
                 <div class="preview-features">
                     <div class="preview-feature">
@@ -2455,7 +2567,10 @@
             <div class="manometro-card card card-xl">
                 <div class="manometro-grid">
                     <div class="manometro-image section-media">
-                        <img src="cena_4_manometro_limite.png" alt="Capacidade quase no limite" loading="lazy">
+                        <picture>
+                            <source srcset="cena_4_manometro_limite.webp" type="image/webp">
+                            <img src="cena_4_manometro_limite.png" alt="Capacidade quase no limite" width="1029" height="1543" loading="lazy" decoding="async">
+                        </picture>
                     </div>
                     <div class="manometro-content">
                         <h2>Capacidade Quase<br>no Limite</h2>
@@ -2531,7 +2646,10 @@
     <section class="solucao-casa-section">
         <div class="container">
             <div class="solucao-casa-card card card-xl">
-                <img src="solucao_casa.png" alt="A mesma solução que usamos em casa. Agora na sua mão. - Família Grupo Garcia" loading="lazy">
+                <picture>
+                    <source srcset="solucao_casa.webp" type="image/webp">
+                    <img src="solucao_casa.png" alt="A mesma solução que usamos em casa. Agora na sua mão. - Família Grupo Garcia" width="2048" height="2048" loading="lazy" decoding="async">
+                </picture>
             </div>
         </div>
     </section>
