@@ -12,50 +12,10 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-    <!-- Preload Critical Assets (HERO image - mobile optimized) -->
-    <link rel="preload" as="image" type="image/webp" href="alerta_de_venda.webp" fetchpriority="high" media="(max-width: 899px)">
-    <link rel="preload" as="image" type="image/webp" href="alerta_de_venda.webp" fetchpriority="high" media="(min-width: 900px)">
-    <link rel="preload" as="image" type="image/webp" href="logo-clickleads.webp">
+    <!-- Preload Critical Assets (LCP image) -->
+    <link rel="preload" as="image" type="image/webp" href="alerta_de_venda.webp" fetchpriority="high">
 
-    <!-- Deferred Analytics (loaded after LCP to avoid render-blocking) -->
-    <script>
-    // Defer tracking scripts until after page is interactive
-    function loadTrackingScripts() {
-        // Meta Pixel Code
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1184246869368178');
-        fbq('track', 'PageView');
-
-        // Google Tag (gtag.js)
-        var gtagScript = document.createElement('script');
-        gtagScript.async = true;
-        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-WLZ8LBE27B';
-        document.head.appendChild(gtagScript);
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-WLZ8LBE27B');
-    }
-    // Use requestIdleCallback or fallback to setTimeout for non-critical scripts
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadTrackingScripts, { timeout: 3000 });
-    } else {
-        setTimeout(loadTrackingScripts, 2000);
-    }
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1184246869368178&ev=PageView&noscript=1"
-    /></noscript>
-
+    <!-- CRITICAL CSS - Above the fold only (inlined for fastest FCP/LCP) -->
     <style>
         /* ===== CSS VARIABLES ===== */
         :root {
@@ -89,25 +49,9 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--text-primary);
             line-height: 1.6;
-            background: radial-gradient(ellipse at 50% 0%, var(--bg2) 0%, var(--bg1) 35%, var(--bg0) 100%);
+            background: linear-gradient(180deg, var(--bg2) 0%, var(--bg0) 100%);
             min-height: 100vh;
             position: relative;
-        }
-
-        /* Grid overlay effect */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
         }
 
         /* ===== UTILITY CLASSES ===== */
@@ -127,11 +71,9 @@
 
         .card {
             background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border);
             border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,.5);
+            box-shadow: 0 8px 24px rgba(0,0,0,.4);
         }
 
         .card-xl {
@@ -150,7 +92,6 @@
             font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 0.5px;
-            box-shadow: 0 0 20px var(--cyan-glow);
         }
 
         .btn-primary {
@@ -165,43 +106,12 @@
             font-weight: 700;
             font-size: 1rem;
             border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.3);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             border: none;
             cursor: pointer;
         }
 
-        .btn-primary:hover {
-            filter: brightness(1.1);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 50px rgba(6, 182, 212, 0.4);
-        }
-
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--text-primary);
-            padding: 14px 28px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-light);
-            cursor: pointer;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--cyan);
-            background: rgba(6, 182, 212, 0.1);
-        }
-
-        /* Botão Como Funciona - Estilo chamativo */
         .btn-como-funciona {
             display: inline-flex;
             align-items: center;
@@ -214,93 +124,17 @@
             font-weight: 700;
             font-size: 1rem;
             border-radius: 8px;
-            transition: all 0.3s ease;
             border: 2px solid var(--cyan);
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), inset 0 0 20px rgba(6, 182, 212, 0.05);
-            animation: btn-glow-pulse 2s ease-in-out infinite;
         }
 
-        @keyframes btn-glow-pulse {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), inset 0 0 20px rgba(6, 182, 212, 0.05);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(6, 182, 212, 0.4), inset 0 0 25px rgba(6, 182, 212, 0.1);
-            }
-        }
-
-        .btn-como-funciona::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-como-funciona:hover {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(37, 99, 235, 0.25) 100%);
-            border-color: #fff;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.4), inset 0 0 30px rgba(6, 182, 212, 0.15);
-        }
-
-        .btn-como-funciona:hover::before {
-            left: 100%;
-        }
-
-        /* Mobile adjustments for Como Funciona button */
         @media (max-width: 499px) {
             .btn-como-funciona {
                 width: 100%;
                 padding: 14px 24px;
                 font-size: 0.95rem;
-            }
-        }
-
-        @media (min-width: 500px) and (max-width: 899px) {
-            .btn-como-funciona {
-                padding: 14px 24px;
-                font-size: 0.95rem;
-            }
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 24px;
-            font-size: 1.1rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-subtitle {
-                margin: 0 auto 32px;
             }
         }
 
@@ -318,8 +152,6 @@
 
         .logo-box {
             background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border);
             padding: 12px 24px;
             border-radius: 16px;
@@ -336,6 +168,164 @@
             }
         }
 
+        /* ===== SALES COUNTER (Above fold) ===== */
+        .sales-counter-section {
+            padding: 24px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sales-counter-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%);
+            border: 2px solid rgba(6, 182, 212, 0.5);
+            border-radius: 20px;
+            padding: 24px 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .sales-counter-card {
+                padding: 32px 24px;
+            }
+        }
+
+        .sales-counter-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cyan);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sales-counter-label .icon {
+            font-size: 1.2rem;
+        }
+
+        .sales-counter-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--cyan) 50%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .sales-counter-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        .sales-counter-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 500px) {
+            .sales-counter-grid {
+                gap: 20px;
+                flex-wrap: nowrap;
+            }
+        }
+
+        .sales-counter-item {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 12px;
+            padding: 16px 12px;
+            min-width: 90px;
+            flex: 1;
+            max-width: 140px;
+        }
+
+        @media (min-width: 500px) {
+            .sales-counter-item {
+                padding: 20px 16px;
+                min-width: 120px;
+                max-width: 160px;
+                border-radius: 16px;
+            }
+        }
+
+        .sales-counter-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        @media (min-width: 500px) {
+            .sales-counter-number {
+                font-size: 2rem;
+            }
+        }
+
+        .sales-counter-number.highlight-gold {
+            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sales-counter-number.highlight-cyan {
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sales-counter-unit {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        @media (min-width: 500px) {
+            .sales-counter-unit {
+                font-size: 0.75rem;
+            }
+        }
+
+        .sales-counter-urgency {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        .sales-counter-urgency strong {
+            color: var(--cyan);
+        }
+
+        .sales-counter-cta {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
         /* ===== HERO SECTION ===== */
         .hero {
             padding: 24px 0 40px;
@@ -347,18 +337,6 @@
             .hero {
                 padding: 32px 0 56px;
             }
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
-            pointer-events: none;
         }
 
         .hero-grid {
@@ -456,7 +434,7 @@
             width: 100%;
         }
 
-        .hero-image-card video {
+        .hero-image-card img {
             width: 100%;
             height: auto;
             border-radius: 12px;
@@ -470,1324 +448,6 @@
             font-size: 0.9rem;
         }
 
-        /* ===== STATUS/PROGRESS SECTION ===== */
-        .status-section {
-            padding: 40px 0;
-            position: relative;
-        }
-
-        @media (min-width: 768px) {
-            .status-section {
-                padding: 56px 0;
-            }
-        }
-
-        .status-card {
-            padding: 32px 24px;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .status-card {
-                padding: 48px;
-            }
-        }
-
-        .status-header {
-            margin-bottom: 40px;
-        }
-
-        .status-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .status-header p {
-            color: var(--text-secondary);
-        }
-
-        /* Progress Steps */
-        .progress-container {
-            margin-bottom: 40px;
-        }
-
-        .progress-steps {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .progress-steps::before {
-            content: '';
-            position: absolute;
-            top: 12px;
-            left: 10%;
-            right: 10%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--cyan) 0%, var(--blue) 100%);
-            opacity: 0.3;
-            z-index: 0;
-        }
-
-        .progress-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-circle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2px solid var(--border-light);
-            background: var(--bg1);
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .progress-step.active .step-circle {
-            background: var(--cyan);
-            border-color: var(--cyan);
-            box-shadow: 0 0 20px var(--cyan-glow);
-        }
-
-        .progress-step.completed .step-circle {
-            background: var(--cyan);
-            border-color: var(--cyan);
-        }
-
-        .step-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 80px;
-            line-height: 1.3;
-        }
-
-        @media (min-width: 768px) {
-            .step-label {
-                font-size: 0.8rem;
-                max-width: 120px;
-            }
-        }
-
-        .progress-step.active .step-label {
-            color: var(--cyan);
-            font-weight: 600;
-        }
-
-        /* Feature Chips */
-        .feature-chips {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .feature-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(6, 182, 212, 0.08);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            color: var(--text-secondary);
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-        }
-
-        .feature-chip .check {
-            color: var(--cyan);
-        }
-
-        /* ===== STORY SECTION ===== */
-        .story-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .story-section {
-                padding: 56px 0;
-            }
-        }
-
-        .story-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        @media (min-width: 768px) {
-            .story-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-        }
-
-        .story-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,.06);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 18px 50px rgba(0,0,0,.55);
-            aspect-ratio: 16/9;
-        }
-
-        .story-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            display: block;
-            background: rgba(0,0,0,.4);
-        }
-
-        .story-card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 24px 20px 20px;
-            background: linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 100%);
-            display: flex;
-            justify-content: center;
-        }
-
-        .story-cta-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
-            color: #0a0a0a;
-            padding: 12px 24px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .story-cta-btn:hover {
-            filter: brightness(1.1);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.4);
-        }
-
-        .story-card-title {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .story-card-caption {
-            padding: 16px 20px;
-            background: rgba(0,0,0,.6);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .story-card-caption .caption-cta {
-            display: block;
-            margin-top: 12px;
-            color: var(--cyan);
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .story-card-caption .caption-cta:hover {
-            color: #fff;
-            text-shadow: 0 0 10px var(--cyan);
-        }
-
-        .story-cta {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* ===== BRAÇO DIREITO SECTION ===== */
-        .braco-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .braco-section {
-                padding: 56px 0;
-            }
-        }
-
-        .braco-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media (min-width: 900px) {
-            .braco-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .braco-image-card {
-            padding: 16px;
-        }
-
-        .braco-image-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-        }
-
-        .braco-content h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .braco-content h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        .braco-list {
-            list-style: none;
-        }
-
-        .braco-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-        }
-
-        .braco-list li::before {
-            content: '→';
-            color: var(--cyan);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        /* ===== HOW IT WORKS ===== */
-        .how-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .how-section {
-                padding: 56px 0;
-            }
-        }
-
-        .how-steps {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .how-step {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 12px;
-            padding: 16px;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        @media (min-width: 768px) {
-            .how-step {
-                gap: 20px;
-                margin-bottom: 16px;
-                padding: 20px;
-            }
-        }
-
-        .how-step:hover {
-            border-color: rgba(6, 182, 212, 0.3);
-            transform: translateX(4px);
-        }
-
-        .how-step-number {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
-            color: #0a0a0a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .how-step-text {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            padding-top: 8px;
-        }
-
-        .how-note {
-            text-align: center;
-            margin-top: 20px;
-            padding: 14px 20px;
-            background: rgba(6, 182, 212, 0.08);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            border-radius: 12px;
-            color: var(--cyan);
-            font-weight: 600;
-        }
-
-        /* ===== CTA SECTION ===== */
-        .cta-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .cta-section {
-                padding: 56px 0;
-            }
-        }
-
-        .cta-card {
-            padding: 48px 24px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-        }
-
-        @media (min-width: 768px) {
-            .cta-card {
-                padding: 64px 48px;
-            }
-        }
-
-        .cta-card h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        @media (min-width: 768px) {
-            .cta-card h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        .cta-card p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-micro {
-            margin-top: 16px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* ===== BENEFITS GRID ===== */
-        .benefits-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .benefits-section {
-                padding: 56px 0;
-            }
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
-
-        @media (min-width: 600px) {
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-            }
-        }
-
-        @media (min-width: 900px) {
-            .benefits-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-            }
-        }
-
-        .benefit-card {
-            padding: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        @media (min-width: 768px) {
-            .benefit-card {
-                padding: 24px;
-            }
-        }
-
-        .benefit-card:hover {
-            border-color: rgba(6, 182, 212, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-
-        .benefit-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .benefit-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .footer-brand {
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .footer-links {
-            margin-bottom: 16px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin: 0 12px;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--cyan);
-        }
-
-        .footer-legal {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            line-height: 1.6;
-        }
-
-        /* ===== SECTION MEDIA (Normalização de Imagens) ===== */
-        .section-media {
-            width: 100%;
-            max-width: 520px;
-            margin-inline: auto;
-        }
-
-        .media-card {
-            border: 1px solid rgba(255,255,255,.10);
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(255,255,255,.06);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 18px 50px rgba(0,0,0,.55);
-        }
-
-        .media-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .media-fixed {
-            aspect-ratio: 16 / 9;
-        }
-
-        .media-fixed img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ===== MANÔMETRO SECTION ===== */
-        .manometro-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .manometro-section {
-                padding: 56px 0;
-            }
-        }
-
-        .manometro-card {
-            padding: 32px 24px;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-        }
-
-        @media (min-width: 768px) {
-            .manometro-card {
-                padding: 48px;
-            }
-        }
-
-        .manometro-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            align-items: center;
-        }
-
-        @media (min-width: 900px) {
-            .manometro-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 48px;
-            }
-        }
-
-        .manometro-image {
-            display: flex;
-            justify-content: center;
-        }
-
-        .manometro-image img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .manometro-content h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @media (min-width: 768px) {
-            .manometro-content h2 {
-                font-size: 2.2rem;
-            }
-        }
-
-        .manometro-content p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .btn-sm {
-            padding: 12px 24px;
-            font-size: 0.9rem;
-        }
-
-        /* ===== PREVIEW SECTION ===== */
-        .preview-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .preview-section {
-                padding: 56px 0;
-            }
-        }
-
-        .preview-card {
-            padding: 32px 24px;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .preview-card {
-                padding: 48px;
-            }
-        }
-
-        .preview-image {
-            max-width: 600px;
-            margin: 0 auto 32px;
-        }
-
-        .preview-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-
-        .preview-features {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 600px) {
-            .preview-features {
-                flex-direction: row;
-                max-width: 100%;
-                justify-content: center;
-            }
-        }
-
-        .preview-feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(6, 182, 212, 0.08);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .preview-icon {
-            font-size: 1.2rem;
-        }
-
-        /* ===== COUNTDOWN TIMER ===== */
-        .countdown-section {
-            padding: 24px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .countdown-card {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%);
-            border: 2px solid rgba(6, 182, 212, 0.5);
-            border-radius: 20px;
-            padding: 24px 16px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            animation: countdown-glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes countdown-glow {
-            0% {
-                box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(6, 182, 212, 0.1);
-            }
-            100% {
-                box-shadow: 0 0 30px rgba(6, 182, 212, 0.5), 0 0 60px rgba(6, 182, 212, 0.2), 0 0 80px rgba(37, 99, 235, 0.1);
-            }
-        }
-
-        .countdown-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(6, 182, 212, 0.1) 50%,
-                transparent 70%
-            );
-            animation: countdown-shine 3s linear infinite;
-        }
-
-        @keyframes countdown-shine {
-            0% {
-                transform: translateX(-100%) rotate(45deg);
-            }
-            100% {
-                transform: translateX(100%) rotate(45deg);
-            }
-        }
-
-        .countdown-label {
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--cyan);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-label .fire {
-            font-size: 1.2rem;
-            animation: fire-pulse 0.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes fire-pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.2); }
-        }
-
-        .countdown-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, var(--cyan) 50%, var(--blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (min-width: 768px) {
-            .countdown-title {
-                font-size: 1.6rem;
-            }
-        }
-
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (min-width: 500px) {
-            .countdown-timer {
-                gap: 16px;
-            }
-        }
-
-        .countdown-item {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(6, 182, 212, 0.4);
-            border-radius: 12px;
-            padding: 12px 8px;
-            min-width: 60px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        @media (min-width: 500px) {
-            .countdown-item {
-                padding: 16px 12px;
-                min-width: 80px;
-                border-radius: 16px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .countdown-item {
-                padding: 20px 16px;
-                min-width: 100px;
-            }
-        }
-
-        .countdown-item:hover {
-            transform: translateY(-4px);
-            border-color: var(--cyan);
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
-        }
-
-        .countdown-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 4px;
-            animation: number-pulse 0.8s ease-in-out infinite;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-        }
-
-        @media (min-width: 500px) {
-            .countdown-number {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .countdown-number {
-                font-size: 3.5rem;
-            }
-        }
-
-        @keyframes number-pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(1.02); }
-        }
-
-        .countdown-unit {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        @media (min-width: 500px) {
-            .countdown-unit {
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .countdown-unit {
-                font-size: 0.85rem;
-                letter-spacing: 2px;
-            }
-        }
-
-        .countdown-separator {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--cyan);
-            display: flex;
-            align-items: center;
-            animation: blink 1s step-start infinite;
-        }
-
-        @media (min-width: 768px) {
-            .countdown-separator {
-                font-size: 3rem;
-            }
-        }
-
-        @keyframes blink {
-            50% { opacity: 0.3; }
-        }
-
-        .countdown-cta {
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-cta .btn-primary {
-            animation: cta-pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes cta-pulse {
-            0%, 100% {
-                box-shadow: 0 10px 40px rgba(6, 182, 212, 0.3);
-            }
-            50% {
-                box-shadow: 0 10px 50px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
-            }
-        }
-
-        .countdown-urgency {
-            margin-top: 12px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-urgency strong {
-            color: var(--cyan);
-        }
-
-        /* Bottom countdown variant */
-        .countdown-section.countdown-bottom .countdown-card {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
-        }
-
-        /* ===== SALES COUNTER SECTION ===== */
-        .sales-counter-section {
-            padding: 24px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .sales-counter-card {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%);
-            border: 2px solid rgba(6, 182, 212, 0.5);
-            border-radius: 20px;
-            padding: 24px 16px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            animation: countdown-glow 2s ease-in-out infinite alternate;
-        }
-
-        @media (min-width: 768px) {
-            .sales-counter-card {
-                padding: 32px 24px;
-            }
-        }
-
-        .sales-counter-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(6, 182, 212, 0.1) 50%,
-                transparent 70%
-            );
-            animation: countdown-shine 3s linear infinite;
-        }
-
-        .sales-counter-label {
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--cyan);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .sales-counter-label .icon {
-            font-size: 1.2rem;
-            animation: fire-pulse 0.5s ease-in-out infinite alternate;
-        }
-
-        .sales-counter-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, var(--cyan) 50%, var(--blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (min-width: 768px) {
-            .sales-counter-title {
-                font-size: 1.6rem;
-            }
-        }
-
-        .sales-counter-grid {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            position: relative;
-            z-index: 1;
-            flex-wrap: wrap;
-        }
-
-        @media (min-width: 500px) {
-            .sales-counter-grid {
-                gap: 20px;
-                flex-wrap: nowrap;
-            }
-        }
-
-        .sales-counter-item {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(6, 182, 212, 0.4);
-            border-radius: 12px;
-            padding: 16px 12px;
-            min-width: 90px;
-            flex: 1;
-            max-width: 140px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        @media (min-width: 500px) {
-            .sales-counter-item {
-                padding: 20px 16px;
-                min-width: 120px;
-                max-width: 160px;
-                border-radius: 16px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .sales-counter-item {
-                padding: 24px 20px;
-                min-width: 140px;
-                max-width: 180px;
-            }
-        }
-
-        .sales-counter-item:hover {
-            transform: translateY(-4px);
-            border-color: var(--cyan);
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
-        }
-
-        .sales-counter-number {
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        @media (min-width: 500px) {
-            .sales-counter-number {
-                font-size: 2rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .sales-counter-number {
-                font-size: 2.5rem;
-            }
-        }
-
-        .sales-counter-number.highlight-gold {
-            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .sales-counter-number.highlight-cyan {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .sales-counter-unit {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        @media (min-width: 500px) {
-            .sales-counter-unit {
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .sales-counter-unit {
-                font-size: 0.85rem;
-                letter-spacing: 2px;
-            }
-        }
-
-        .sales-counter-urgency {
-            margin-top: 16px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            position: relative;
-            z-index: 1;
-        }
-
-        .sales-counter-urgency strong {
-            color: var(--cyan);
-        }
-
-        .sales-counter-cta {
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .sales-counter-cta .btn-primary {
-            animation: cta-pulse 2s ease-in-out infinite;
-        }
-
-        /* Bottom sales counter variant */
-        .sales-counter-section.sales-counter-bottom .sales-counter-card {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
-        }
-
-        /* ===== PROVA SOCIAL SECTION ===== */
-        .prova-social-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .prova-social-section {
-                padding: 56px 0;
-            }
-        }
-
-        .prova-social-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .prova-social-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 24px;
-            }
-        }
-
-        .prova-social-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 18px 50px rgba(0,0,0,.55);
-            transition: all 0.3s ease;
-        }
-
-        .prova-social-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(6, 182, 212, 0.4);
-            box-shadow: 0 25px 60px rgba(0,0,0,.65), 0 0 30px var(--cyan-glow);
-        }
-
-        .prova-social-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 15px;
-        }
-
-        .prova-social-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .prova-social-header .pill {
-            margin-bottom: 16px;
-        }
-
-        .prova-social-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #22c55e;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
-        }
-
-        .prova-social-cta {
-            text-align: center;
-            margin-top: 32px;
-        }
-
-        /* ===== CRIATIVO SECTION ===== */
-        .criativo-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .criativo-section {
-                padding: 56px 0;
-            }
-        }
-
-        .criativo-card {
-            overflow: hidden;
-            border-radius: 20px;
-            max-width: 700px;
-            margin: 0 auto;
-            border: 2px solid rgba(6, 182, 212, 0.3);
-            box-shadow: 0 25px 60px rgba(0,0,0,.6), 0 0 40px var(--cyan-glow);
-            transition: all 0.3s ease;
-        }
-
-        .criativo-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(6, 182, 212, 0.5);
-            box-shadow: 0 30px 70px rgba(0,0,0,.7), 0 0 60px var(--cyan-glow);
-        }
-
-        .criativo-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ===== SOLUÇÃO CASA SECTION ===== */
-        .solucao-casa-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .solucao-casa-section {
-                padding: 56px 0;
-            }
-        }
-
-        .solucao-casa-card {
-            overflow: hidden;
-            border-radius: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 2px solid rgba(6, 182, 212, 0.3);
-            box-shadow: 0 25px 60px rgba(0,0,0,.6), 0 0 40px var(--cyan-glow);
-            transition: all 0.3s ease;
-        }
-
-        .solucao-casa-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(6, 182, 212, 0.5);
-            box-shadow: 0 30px 70px rgba(0,0,0,.7), 0 0 60px var(--cyan-glow);
-        }
-
-        .solucao-casa-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ===== CTA CLARITY ELEMENTS ===== */
         .cta-clarity-text {
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -1815,390 +475,53 @@
                 text-align: left;
             }
         }
-
-        /* ===== CAMPAIGN TYPES SECTION ===== */
-        .campaign-section {
-            padding: 48px 0;
-        }
-
-        @media (min-width: 768px) {
-            .campaign-section {
-                padding: 72px 0;
-            }
-        }
-
-        .campaign-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .campaign-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-top: 16px;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @media (min-width: 768px) {
-            .campaign-title {
-                font-size: 2rem;
-            }
-        }
-
-        .campaign-subtitle {
-            color: var(--text-muted);
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .campaign-grid {
-            display: grid;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .campaign-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .campaign-card {
-            overflow: hidden;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: var(--glass);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,.45);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .campaign-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(6, 182, 212, 0.5);
-            box-shadow: 0 30px 60px rgba(0,0,0,.55), 0 0 30px var(--cyan-glow);
-        }
-
-        .campaign-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .campaign-info {
-            padding: 16px 18px 20px;
-        }
-
-        .campaign-info h4 {
-            font-size: 1.05rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .campaign-info p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* ===== INTENT BLOCK SECTION ===== */
-        .intent-block-section {
-            padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .intent-block-section {
-                padding: 56px 0;
-            }
-        }
-
-        .intent-block-card {
-            padding: 32px 24px;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .intent-block-card {
-                padding: 48px;
-            }
-        }
-
-        .intent-block-card h3 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @media (min-width: 768px) {
-            .intent-block-card h3 {
-                font-size: 1.8rem;
-            }
-        }
-
-        .intent-list {
-            list-style: none;
-            max-width: 500px;
-            margin: 0 auto 32px;
-            text-align: left;
-        }
-
-        .intent-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.5;
-        }
-
-        .intent-list li::before {
-            content: '✓';
-            color: var(--cyan);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .intent-cta-wrapper {
-            text-align: center;
-        }
-
-        .intent-cta-wrapper .cta-micro-text {
-            text-align: center;
-        }
-
-        /* ===== MODAL STYLES ===== */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, var(--bg2) 0%, var(--bg1) 100%);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 24px;
-            padding: 32px 24px;
-            max-width: 480px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 25px 80px rgba(0,0,0,.8), 0 0 60px var(--cyan-glow);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: scale(1);
-        }
-
-        @media (min-width: 768px) {
-            .modal-content {
-                padding: 48px 40px;
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,.1);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: rgba(255,255,255,.2);
-            color: var(--text-primary);
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 32px;
-            background: linear-gradient(135deg, #fff 0%, var(--cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @media (min-width: 768px) {
-            .modal-title {
-                font-size: 1.8rem;
-            }
-        }
-
-        .modal-steps {
-            margin-bottom: 32px;
-        }
-
-        .modal-step {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 16px;
-            padding: 16px;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .modal-step:hover {
-            border-color: rgba(6, 182, 212, 0.3);
-        }
-
-        .modal-step-number {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
-            color: #0a0a0a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .modal-step-text {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            padding-top: 4px;
-        }
-
-        .modal-cta-wrapper {
-            text-align: center;
-        }
-
-        .modal-cta-wrapper .cta-micro-text {
-            text-align: center;
-        }
-
-        /* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
-        /* Reduce heavy effects on mobile to improve LCP/GPU performance */
-        @media (max-width: 768px) {
-            /* Disable backdrop-filter on mobile (GPU expensive) */
-            .card,
-            .logo-box,
-            .prova-social-card,
-            .modal-overlay,
-            .countdown-item,
-            .sales-counter-item {
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-            }
-
-            /* Reduce box-shadows on mobile */
-            .card,
-            .prova-social-card,
-            .criativo-card,
-            .solucao-casa-card,
-            .campaign-card {
-                box-shadow: 0 8px 20px rgba(0,0,0,.3);
-            }
-
-            /* Simplify glow effects */
-            .pill,
-            .btn-primary {
-                box-shadow: none;
-            }
-
-            /* Disable heavy animations on mobile */
-            .countdown-card,
-            .sales-counter-card {
-                animation: none;
-            }
-
-            .countdown-card::before,
-            .sales-counter-card::before {
-                display: none;
-            }
-
-            .countdown-number {
-                animation: none;
-            }
-
-            .btn-como-funciona {
-                animation: none;
-                box-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
-            }
-
-            .btn-como-funciona::before {
-                display: none;
-            }
-
-            /* Disable grid overlay completely on mobile (GPU expensive) */
-            body::before {
-                display: none;
-            }
-
-            /* Reduce paint complexity */
-            .hero::before {
-                display: none;
-            }
-
-            /* Remove hover transforms on touch devices */
-            .prova-social-card:hover,
-            .benefit-card:hover,
-            .how-step:hover,
-            .criativo-card:hover,
-            .solucao-casa-card:hover,
-            .campaign-card:hover {
-                transform: none;
-            }
-
-            /* Simplify body background gradient for mobile */
-            body {
-                background: linear-gradient(180deg, var(--bg2) 0%, var(--bg0) 100%);
-            }
-
-            /* Disable transitions for faster paint */
-            .btn-primary,
-            .btn-outline,
-            .how-step,
-            .campaign-card {
-                transition: none;
-            }
-
-            /* Contain paint for better performance */
-            .container {
-                contain: layout style;
-            }
-        }
     </style>
+
+    <!-- NON-CRITICAL CSS - loaded async -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <!-- Deferred Analytics (loaded after LCP) -->
+    <script>
+    // Defer tracking scripts until after page is fully interactive
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() {
+            loadTrackingScripts();
+        }, { timeout: 4000 });
+    } else {
+        window.addEventListener('load', function() {
+            setTimeout(loadTrackingScripts, 2000);
+        });
+    }
+    function loadTrackingScripts() {
+        // Meta Pixel Code
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1184246869368178');
+        fbq('track', 'PageView');
+
+        // Google Tag (gtag.js)
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-WLZ8LBE27B';
+        document.head.appendChild(gtagScript);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-WLZ8LBE27B');
+    }
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1184246869368178&ev=PageView&noscript=1"
+    /></noscript>
 </head>
 
 <body>
@@ -2285,7 +608,7 @@
                     <div class="hero-image-card card card-xl">
                         <picture>
                             <source srcset="alerta_de_venda.webp" type="image/webp">
-                            <img src="alerta_de_venda.jpeg" alt="Alerta de vendas - campanha SulAmérica" width="1080" height="1350" style="width: 100%; height: auto; border-radius: 12px;" fetchpriority="high" decoding="async">
+                            <img src="alerta_de_venda.jpeg" alt="Alerta de vendas - campanha SulAmérica" width="1080" height="1350" fetchpriority="high" decoding="async">
                         </picture>
                         <p class="hero-image-caption">Alerta de vendas - campanha SulAmérica</p>
                     </div>
@@ -2746,100 +1069,94 @@
         </div>
     </div>
 
-    <script>
-        // Sales Counter - Incrementa números para parecer "ao vivo"
+    <!-- ALL SCRIPTS DEFERRED - Execute after DOM is ready -->
+    <script defer>
+        // Sales Counter - Deferred and optimized to reduce main thread blocking
         function initSalesCounter() {
-            // Valores base dos contadores
-            const counters = {
+            var counters = {
                 'pacotes-vendidos': { base: 247, increment: 1, maxVariation: 3, interval: 45000 },
                 'leads-entregues': { base: 1832, increment: 2, maxVariation: 5, interval: 30000 },
                 'propostas-fechadas': { base: 847, increment: 1, maxVariation: 2, interval: 60000 },
                 'corretores-vendendo': { base: 156, increment: 0, maxVariation: 1, interval: 120000 }
             };
 
-            // Recupera valores salvos do localStorage ou usa base
             Object.keys(counters).forEach(function(id) {
-                const saved = localStorage.getItem('counter_' + id);
-                if (saved) {
-                    counters[id].current = parseInt(saved);
-                } else {
-                    counters[id].current = counters[id].base;
-                }
+                var saved = localStorage.getItem('counter_' + id);
+                counters[id].current = saved ? parseInt(saved) : counters[id].base;
             });
 
-            // Formata número com ponto de milhar
             function formatNumber(num) {
                 return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
             }
 
-            // Atualiza o display de um contador
             function updateDisplay(id) {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.textContent = formatNumber(counters[id].current);
-                    // Adiciona efeito de pulse
-                    el.style.animation = 'none';
-                    el.offsetHeight; // Trigger reflow
-                    el.style.animation = 'number-pulse 0.5s ease-out';
-                }
+                var el = document.getElementById(id);
+                if (el) el.textContent = formatNumber(counters[id].current);
             }
 
-            // Incrementa um contador com variação aleatória
             function incrementCounter(id) {
-                const counter = counters[id];
-                const variation = Math.floor(Math.random() * (counter.maxVariation + 1));
+                var counter = counters[id];
+                var variation = Math.floor(Math.random() * (counter.maxVariation + 1));
                 counter.current += counter.increment + variation;
                 localStorage.setItem('counter_' + id, counter.current);
                 updateDisplay(id);
             }
 
-            // Inicializa displays
-            Object.keys(counters).forEach(function(id) {
-                updateDisplay(id);
-                // Configura incremento periódico
-                if (counters[id].increment > 0 || counters[id].maxVariation > 0) {
-                    setInterval(function() {
-                        incrementCounter(id);
-                    }, counters[id].interval);
-                }
-            });
+            // Initialize displays
+            Object.keys(counters).forEach(updateDisplay);
 
-            // Volume gerado e taxa de conversão são calculados
-            function updateDerivedCounters() {
-                // Volume gerado baseado em propostas (média de R$ 2.700 por proposta)
-                const propostas = counters['propostas-fechadas'].current;
-                const volume = (propostas * 2700) / 1000000; // Em milhões
-                const volumeEl = document.getElementById('volume-gerado');
-                if (volumeEl) {
-                    volumeEl.textContent = 'R$ ' + volume.toFixed(1) + 'M';
-                }
-
-                // Taxa de conversão (propostas / leads * 100, limitado a 89-92%)
-                const taxaEl = document.getElementById('taxa-conversao');
-                if (taxaEl) {
-                    const taxaBase = 89;
-                    const taxaVariation = Math.floor(Math.random() * 4); // 0-3
-                    taxaEl.textContent = (taxaBase + taxaVariation) + '%';
-                }
+            // Use requestIdleCallback for non-critical updates
+            function scheduleUpdates() {
+                Object.keys(counters).forEach(function(id) {
+                    if (counters[id].increment > 0 || counters[id].maxVariation > 0) {
+                        setTimeout(function tick() {
+                            if ('requestIdleCallback' in window) {
+                                requestIdleCallback(function() { incrementCounter(id); });
+                            } else {
+                                incrementCounter(id);
+                            }
+                            setTimeout(tick, counters[id].interval);
+                        }, counters[id].interval);
+                    }
+                });
             }
 
-            // Atualiza contadores derivados periodicamente
+            function updateDerivedCounters() {
+                var propostas = counters['propostas-fechadas'].current;
+                var volume = (propostas * 2700) / 1000000;
+                var volumeEl = document.getElementById('volume-gerado');
+                if (volumeEl) volumeEl.textContent = 'R$ ' + volume.toFixed(1) + 'M';
+
+                var taxaEl = document.getElementById('taxa-conversao');
+                if (taxaEl) taxaEl.textContent = (89 + Math.floor(Math.random() * 4)) + '%';
+            }
+
             updateDerivedCounters();
-            setInterval(updateDerivedCounters, 60000);
+
+            // Defer interval setup to after paint
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(scheduleUpdates, { timeout: 5000 });
+            } else {
+                setTimeout(scheduleUpdates, 3000);
+            }
         }
 
-        // Initialize sales counter when DOM is ready
-        document.addEventListener('DOMContentLoaded', initSalesCounter);
+        // Initialize after DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSalesCounter);
+        } else {
+            initSalesCounter();
+        }
+    </script>
 
-        // Meta Pixel + GA4 Lead event tracking
+    <script defer>
+        // Event tracking - deferred
         document.addEventListener('DOMContentLoaded', function() {
-            const ctaButtons = document.querySelectorAll('.btn-primary');
+            var ctaButtons = document.querySelectorAll('.btn-primary');
             ctaButtons.forEach(function(btn) {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function(e) {
                     // Meta Pixel tracking
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead');
-                    }
+                    if (typeof fbq !== 'undefined') fbq('track', 'Lead');
                     // GA4 tracking
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'generate_lead', {
@@ -2847,28 +1164,16 @@
                             'event_label': 'CTA Click - Acessar App'
                         });
                     }
-                });
-            });
-        });
 
-        // GA4 explicit tracking for all CTA buttons (cta_ver_app)
-        // Ensures event is sent before navigation with callback + fallback
-        document.addEventListener('DOMContentLoaded', function() {
-            var ctaButtons = document.querySelectorAll('.btn-primary');
-            ctaButtons.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
                     var ctaName = btn.getAttribute('data-cta') || 'unknown';
                     var href = btn.tagName === 'A' ? btn.href : null;
 
-                    // Function to send event and then navigate
                     function sendEventThenGo() {
                         var navigated = false;
                         var go = function() {
                             if (navigated) return;
                             navigated = true;
-                            if (href) {
-                                window.location.href = href;
-                            }
+                            if (href) window.location.href = href;
                         };
 
                         if (typeof gtag !== 'undefined') {
@@ -2879,33 +1184,41 @@
                                 page_location: window.location.href,
                                 event_callback: go
                             });
-                            // Fallback timeout in case callback fails
                             setTimeout(go, 300);
                         } else {
                             go();
                         }
                     }
 
-                    // If it's a link with href, prevent default and handle navigation after event
                     if (href) {
                         e.preventDefault();
                         sendEventThenGo();
-                    } else {
-                        // For non-link elements, just send the event
-                        if (typeof gtag !== 'undefined') {
-                            gtag('event', 'cta_ver_app', {
-                                event_category: 'engagement',
-                                event_label: ctaName,
-                                cta_position: ctaName,
-                                page_location: window.location.href
-                            });
-                        }
+                    }
+                });
+            });
+
+            // Intent tracking for mid_page and modal CTAs
+            var intentButtons = document.querySelectorAll('[data-cta="mid_page"], [data-cta="modal"]');
+            intentButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    var ctaPosition = btn.getAttribute('data-cta') || 'unknown';
+                    var href = btn.tagName === 'A' ? btn.href : null;
+
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'intent_view_app', {
+                            event_category: 'engagement',
+                            event_label: 'alta_intencao',
+                            cta_position: ctaPosition,
+                            page_location: window.location.href
+                        });
                     }
                 });
             });
         });
+    </script>
 
-        // Modal functionality
+    <script defer>
+        // Modal functionality - deferred
         document.addEventListener('DOMContentLoaded', function() {
             var modal = document.getElementById('como-funciona-modal');
             var openBtn = document.getElementById('open-modal-btn');
@@ -2921,88 +1234,38 @@
                 document.body.style.overflow = '';
             }
 
-            if (openBtn) {
-                openBtn.addEventListener('click', openModal);
-            }
-
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeModal);
-            }
-
-            // Close modal when clicking outside content
+            if (openBtn) openBtn.addEventListener('click', openModal);
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
             if (modal) {
                 modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        closeModal();
-                    }
+                    if (e.target === modal) closeModal();
                 });
             }
-
-            // Close modal with Escape key
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    closeModal();
-                }
-            });
-        });
-
-        // GA4 intent_view_app tracking for high-intent CTAs (mid_page and modal)
-        // Fires for data-cta="mid_page" and data-cta="modal"
-        document.addEventListener('DOMContentLoaded', function() {
-            var intentCtaSelectors = '[data-cta="mid_page"], [data-cta="modal"]';
-            var intentButtons = document.querySelectorAll(intentCtaSelectors);
-
-            intentButtons.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    var ctaPosition = btn.getAttribute('data-cta') || 'unknown';
-                    var href = btn.tagName === 'A' ? btn.href : null;
-
-                    function sendIntentEventThenGo() {
-                        var navigated = false;
-                        var go = function() {
-                            if (navigated) return;
-                            navigated = true;
-                            if (href) {
-                                window.location.href = href;
-                            }
-                        };
-
-                        if (typeof gtag !== 'undefined') {
-                            gtag('event', 'intent_view_app', {
-                                event_category: 'engagement',
-                                event_label: 'alta_intencao',
-                                cta_position: ctaPosition,
-                                page_location: window.location.href,
-                                event_callback: go
-                            });
-                            // Fallback timeout in case callback fails
-                            setTimeout(go, 300);
-                        } else {
-                            go();
-                        }
-                    }
-
-                    // For links, prevent default and handle navigation after event
-                    if (href) {
-                        e.preventDefault();
-                        sendIntentEventThenGo();
-                    } else {
-                        // For non-link elements, just send the event
-                        if (typeof gtag !== 'undefined') {
-                            gtag('event', 'intent_view_app', {
-                                event_category: 'engagement',
-                                event_label: 'alta_intencao',
-                                cta_position: ctaPosition,
-                                page_location: window.location.href
-                            });
-                        }
-                    }
-                });
+                if (e.key === 'Escape' && modal && modal.classList.contains('active')) closeModal();
             });
         });
     </script>
 
-    <!-- Bot de Atendimento -->
-    <script async src="https://chat.clickleads.com/widget.js"></script>
-  </body>
-  </html>
+    <!-- Bot de Atendimento - loaded async after everything -->
+    <script>
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(function() {
+                var s = document.createElement('script');
+                s.src = 'https://chat.clickleads.com/widget.js';
+                s.async = true;
+                document.body.appendChild(s);
+            }, { timeout: 5000 });
+        } else {
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    var s = document.createElement('script');
+                    s.src = 'https://chat.clickleads.com/widget.js';
+                    s.async = true;
+                    document.body.appendChild(s);
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
